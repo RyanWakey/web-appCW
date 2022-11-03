@@ -15,7 +15,13 @@ return new class extends Migration
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
+            $table->string('display_name');
+            $table->string('bio')->nullable();
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
             $table->timestamps();
+            $table->bigInteger('member_id')->references('id')->on('member')
+                ->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
