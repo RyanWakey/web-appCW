@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Member;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Member>
@@ -17,7 +18,9 @@ class MemberFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'username' => fake()->unique()->userName(),
+            'email' => fake()->unique()->email(),
+            'password' => fake()->password(),
         ];
     }
 }

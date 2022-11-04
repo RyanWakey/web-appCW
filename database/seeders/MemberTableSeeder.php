@@ -28,5 +28,7 @@ class MemberTableSeeder extends Seeder
         $m->email = "benz@email.com";
         $m->password = "notsecret";
         $m->save();
+
+        Member::factory()->count(8)->create();
     }
 }

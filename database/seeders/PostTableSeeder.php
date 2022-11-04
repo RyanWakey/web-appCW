@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Post;
+use App\Models\Member;
 
 class PostTableSeeder extends Seeder
 {
@@ -21,5 +22,9 @@ class PostTableSeeder extends Seeder
         $p->description = "Burger better";
         $p->member_id = 1;
         $p->save();
+
+        Member::factory()
+            ->has(Post::factory()->count(3))
+            ->create();
     }
 }
