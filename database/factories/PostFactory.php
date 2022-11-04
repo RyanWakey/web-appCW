@@ -27,7 +27,7 @@ class PostFactory extends Factory
     {
         return [
             'title' => fake()->sentence($nbWords = 8, $variableNbWords = true),
-            'description' => fake()->sentences($nbSentences = 3, $asText = false),
+            'description' => fake()->sentences($nbSentences = 3, $asText = true),
         ];
     }
 }
