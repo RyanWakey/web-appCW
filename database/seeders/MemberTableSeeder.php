@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Member;
 
 class MemberTableSeeder extends Seeder
 {
@@ -15,10 +16,10 @@ class MemberTableSeeder extends Seeder
     public function run()
     {
         //hardcoded member
-        $u = new Member;
-        $u = "FrankMan";
-        $u = "Frank100@email.com";
-        $u = "secret";
-        $u->save();
+        $m = new Member;
+        $m->username = "FrankMan";
+        $m->email = "Frank100@email.com";
+        $m->password = "secret";
+        $m->save();
     }
 }
