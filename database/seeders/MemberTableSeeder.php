@@ -15,7 +15,7 @@ class MemberTableSeeder extends Seeder
     public function run()
     {
         //hardcoded member
-        $u = new User;
+        $u = new Member;
         $u = "FrankMan";
         $u = "Frank100@email.com";
         $u = "secret";
