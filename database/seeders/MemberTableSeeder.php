@@ -21,5 +21,12 @@ class MemberTableSeeder extends Seeder
         $m->email = "Frank100@email.com";
         $m->password = "secret";
         $m->save();
+
+        //hardcoded member
+        $m = new Member;
+        $m->username = "BenzO";
+        $m->email = "benz@email.com";
+        $m->password = "notsecret";
+        $m->save();
     }
 }
