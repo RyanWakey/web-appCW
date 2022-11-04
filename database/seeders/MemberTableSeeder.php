@@ -14,12 +14,6 @@ class MemberTableSeeder extends Seeder
      */
     public function run()
     {
-        $table->id();
-            $table->string('username')->unique();
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->timestamps();
         //hardcoded member
         $u = new User;
         $u = "FrankMan";
