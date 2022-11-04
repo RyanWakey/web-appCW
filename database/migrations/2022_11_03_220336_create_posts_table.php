@@ -17,9 +17,11 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('description');
+            $table->bigInteger('member_id')->unsigned();
             $table->timestamps();
-            $table->bigInteger('member_id')->references('id')->on('members')
-            ->onDelete('cascade')->onUpdate('cascade');
+           
+            $table->foreign('member_id')->references('id')->on('members')
+                ->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
