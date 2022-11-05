@@ -16,18 +16,11 @@ class PostFactory extends Factory
      * @return array<string, mixed>
      */
     public function definition()
-        // $table->id();
-        //     $table->string('title');
-        //     $table->string('description');
-        //     $table->bigInteger('member_id')->unsigned();
-        //     $table->timestamps();
-           
-        //     $table->foreign('member_id')->references('id')->on('members')
-        //         ->onDelete('cascade')->onUpdate('cascade');
     {
         return [
             'title' => fake()->sentence($nbWords = 8, $variableNbWords = true),
             'description' => fake()->sentences($nbSentences = 3, $asText = true),
+            'member_id' => fake()->numberBetween(1,Member::get()->unique()->count()),
         ];
     }
 }

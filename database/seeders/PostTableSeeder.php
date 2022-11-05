@@ -22,9 +22,10 @@ class PostTableSeeder extends Seeder
         $p->description = "Burger better";
         $p->member_id = 1;
         $p->save();
-
-        Member::factory()
+        
+       //Post::factory()->count(11)->create();
+       Member::factory()
             ->has(Post::factory()->count(3))
-            ->create();
+              ->count(10)->create();
     }
 }
