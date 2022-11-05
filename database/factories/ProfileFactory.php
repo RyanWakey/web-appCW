@@ -22,8 +22,9 @@ class ProfileFactory extends Factory
             'first_name' => fake()->firstName(),
             'last_name' => fake()->lastName(),
             'date_of_birth' => fake()->date(),
-            'bio' => fake()-sentences($nbSentences = 3, $asText = true);
-            'member_id' =>  fake()->numberBetween(1,Member::get()->unique()->count()),
+            'bio' => fake()->sentences($nbSentences = 3, $asText = true),
+            //already 2 hardcoded members with 2 hardcoded profiles, so range from 3 to rest of members.
+            'member_id' =>  fake()->unique()->numberBetween(3,Member::get()->count()),
         ];
     }
 }
