@@ -23,12 +23,12 @@ class MemberTableSeeder extends Seeder
         $m->save();
 
         //hardcoded member
-        $m = new Member;
-        $m->username = "BenzO";
-        $m->email = "benz@email.com";
-        $m->password = "notsecret";
-        $m->save();
+        $m2 = new Member;
+        $m2->username = "BenzO";
+        $m2->email = "benz@email.com";
+        $m2->password = "notsecret";
+        $m2->save();
 
-        Member::factory()->count(8)->create();
+        Member::factory()->count(28)->create();
     }
 }

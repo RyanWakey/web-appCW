@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Profile;
+use App\Models\Member;
 
 class ProfileTableSeeder extends Seeder
 {
@@ -24,6 +25,14 @@ class ProfileTableSeeder extends Seeder
         $p->member_id = 1;
         $p->save();
 
-        Profile::factory()->count(8)->create();
+        $p2 = new Profile;
+        $p2->display_name = "benza";
+        $p2->first_name = "ben";
+        $p2->last_name = "za";
+        $p2->bio = "my bio";
+        $p2->member_id = 2;
+        $p2->save();
+
+        Profile::factory()->count(Member::get()->count()-2)->create();
     }
 }

@@ -14,18 +14,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-       
         $this->call(MemberTableSeeder::class);
-        $this->call(ProfileTableSeeder::class); 
         $this->call(PostTableSeeder::class); 
-   
-       
-       
-        // \App\Models\User::factory(10)->create();
+        $this->call(ProfileTableSeeder::class); 
+        
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
     }
 }
