@@ -17,7 +17,12 @@ class ProfileFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'display_name' => fake()->userName(),
+            'first_name' => fake()->firstName(),
+            'last_name' => fake()->lastName(),
+            'date_of_birth' => fake()->date(),
+            'bio' => fake()-sentences($nbSentences = 3, $asText = true);
+            'member_id' =>  fake()->numberBetween(1,Member::get()->unique()->count()),
         ];
     }
 }
