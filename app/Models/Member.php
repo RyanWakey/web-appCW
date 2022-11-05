@@ -18,4 +18,8 @@ class Member extends Model
     public function posts() {
         return $this->hasMany(Post::class);
     }
+    // A member has many comments
+    public function comments(){
+        $this->hasMany(Comment::class);
+    }
 }
