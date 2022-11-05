@@ -4,8 +4,10 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+
 use App\Models\Member;
 use App\Models\Post;
+use App\Models\Comment;
 
 class MemberTableSeeder extends Seeder
 {
@@ -30,7 +32,7 @@ class MemberTableSeeder extends Seeder
         $m2->password = "notsecret";
         $m2->save();
 
-        
-        Member::factory()->has(Post::factory()->count(3))->count(38)->create();
+        Member::factory()->has(Post::factory()->has(Comment::factory() -> count(2)) -> count(3))->count(38)->create();
+        //Member::factory()->has(Post::factory()->count(3))->count(38)->create();
     }
 }

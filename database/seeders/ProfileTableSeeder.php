@@ -33,6 +33,7 @@ class ProfileTableSeeder extends Seeder
         $p2->member_id = 2;
         $p2->save();
 
+        // -2 as we already have 2 defined.
         Profile::factory()->count(Member::get()->count()-2)->create();
     }
 }

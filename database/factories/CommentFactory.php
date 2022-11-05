@@ -18,7 +18,7 @@ class CommentFactory extends Factory
     public function definition()
     {
         return [
-         'description' => fake()->sentences($nbSentences = 2, $asText = true);
+         'description' => fake()->sentences($nbSentences = 2, $asText = true),
          'member_id' => fake()->numberBetween(1,Member::get()->count()),
          'post_id' => fake()->numberBetween(1,Post::get()->count()),
         ];
