@@ -24,5 +24,6 @@ class ProfileTableSeeder extends Seeder
         $p->member_id = 1;
         $p->save();
 
+        Profile::factory()->count(8)->create();
     }
 }

@@ -23,9 +23,7 @@ class PostTableSeeder extends Seeder
         $p->member_id = 1;
         $p->save();
         
-       //Post::factory()->count(11)->create();
-       Member::factory()
-            ->has(Post::factory()->count(3))
-              ->count(10)->create();
+       Post::factory()->count(11)->create();
+      // Member::factory()->has(Post::factory()->count(3))->count(10)->create();
     }
 }

@@ -10,7 +10,7 @@ class Profile extends Model
     use HasFactory;
 
      //profile belongs to the Member
-     public function member() {
+    public function member() {
         return $this->belongsTo(Member::class);
     }
 }
