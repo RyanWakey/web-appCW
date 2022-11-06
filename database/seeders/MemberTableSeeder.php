@@ -32,7 +32,10 @@ class MemberTableSeeder extends Seeder
         $m2->password = "notsecret";
         $m2->save();
 
-        Member::factory()->has(Post::factory()->has(Comment::factory() -> count(2)) -> count(3))->count(38)->create();
-        //Member::factory()->has(Post::factory()->count(3))->count(38)->create();
+        //Creats relationship between Members, Posts and Comments.
+        for($i=0;$i<38;$i++){
+        Member::factory()->has(Post::factory()->has(Comment::factory() -> count(random_int(2,4))) 
+                -> count(random_int(1,3)))->create();
+        }
     }
 }
