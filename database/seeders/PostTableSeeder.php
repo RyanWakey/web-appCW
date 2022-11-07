@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Post;
-use App\Models\Member;
 
 class PostTableSeeder extends Seeder
 {
@@ -23,14 +22,14 @@ class PostTableSeeder extends Seeder
         $p->member_id = 1;
         $p->save();
 
+        //hardcoded post 2
         $p2 = new Post;
         $p2->title = "Burger or Pizza";
         $p2->description = "better Burger";
         $p2->member_id = 1;
-        $p2->save();
-        
-        
-        
-        
+        $p2->save(); 
+
+        // Creates 40 posts with random data
+        // Post::factory()->count(40)->create();
     }
 }

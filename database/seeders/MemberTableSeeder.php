@@ -25,17 +25,18 @@ class MemberTableSeeder extends Seeder
         $m->password = "secret";
         $m->save();
 
-        //hardcoded member
+        //hardcoded member2
         $m2 = new Member;
         $m2->username = "BenzO";
         $m2->email = "benz@email.com";
         $m2->password = "notsecret";
         $m2->save();
 
-        //Creats relationship between Members, Posts and Comments.
-        for($i=0;$i<38;$i++){
+        // Creates 40 members with random data
+        // Member::factory()->count(40)->creat();
+        
+        //Creates factory relationship between Members, Posts and Comments.  
         Member::factory()->has(Post::factory()->has(Comment::factory() -> count(random_int(2,4))) 
-                -> count(random_int(1,3)))->create();
-        }
+            -> count(random_int(2,3)))->count(38)->create();      
     }
 }

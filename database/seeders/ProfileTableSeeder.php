@@ -24,7 +24,8 @@ class ProfileTableSeeder extends Seeder
         $p->bio = "I am very tall";
         $p->member_id = 1;
         $p->save();
-
+        
+        //hardcoded profile 2
         $p2 = new Profile;
         $p2->display_name = "benza";
         $p2->first_name = "ben";

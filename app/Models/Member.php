@@ -13,13 +13,14 @@ class Member extends Model
     public function profile() {
         return $this->hasOne(Profile::class);
     }
-
+    
     // A Member has many posts
     public function posts() {
         return $this->hasMany(Post::class);
     }
-    // A member has many comments
-    public function comments(){
-        $this->hasMany(Comment::class);
+
+    // A Member has many comments
+    public function comments() {
+        return $this->hasMany(Comment::class);
     }
 }
