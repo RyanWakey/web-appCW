@@ -31,5 +31,8 @@ class PostTableSeeder extends Seeder
 
         // Creates 40 posts with random data
         // Post::factory()->count(40)->create();
+
+        // Creates 38 Posts with 2 to 4 comments each seeding.
+        // Post::factory()->has(Comment::factory()->count(random_int(2,4))->count(38)->create();
     }
 }
