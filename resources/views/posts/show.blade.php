@@ -8,5 +8,4 @@
         Title: {{$post->title}}</li>
         <li>Description {{$post->description}}</li>    
     </ul>
-   
 @endsection
