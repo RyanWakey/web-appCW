@@ -1,15 +1,16 @@
-@extends(layouts.basic)
+@extends('layouts.basic')
 
 @section('title','New Post')
-    <p> Create a post below</p>
+    
 
 @section('content')
-    <form method="POST" action="{{route('post.store')}}">
+<p> Enter the details below to create a Post</p>
+    <form method="POST" action="{{route('posts.store')}}">
         @csrf
-        <p>title: <input type="text" name="Post Title"></p>
-        <p>description: <input type="text" name="Description"></p>
+        <p>Title: <input type="text" name="title"></p>
+        <p>Description: <input type="text" name="description"></p>
         <input type="submit" value="Submit">
-        <a href="{{route('post.index') }}">Cancel</a>
+        <a href="{{route('posts.index') }}">Cancel</a>
 
     </form>
 @endsection
