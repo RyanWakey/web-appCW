@@ -3,6 +3,10 @@
 @section('title','Post')
 
 @section('content')
-  {{$post}}
-
+    <ul>
+        Post created by User: {{$post->member->username}}<br />
+        Title: {{$post->title}}</li>
+        <li>Description {{$post->description}}</li>    
+    </ul>
+   
 @endsection
