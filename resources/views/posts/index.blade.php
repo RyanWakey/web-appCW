@@ -1,6 +1,6 @@
 @extends('layouts.basic')
 
-@section('title','Posts Index')
+@section('title','User Posts')
 
 @section('content')
     <p> The posts from the users:</p>
@@ -9,5 +9,7 @@
             <li><a href='{{ route('posts.show', ['id' => $post->id]) }}'>{{ $post ->title }}</a></li>
         @endforeach
     </ul>
+    <a href="{{ route('posts.create')}}">Create a Post</a><br><br><br>
+    
    {{ $posts -> links('pagination::tailwind')}}
 @endsection
