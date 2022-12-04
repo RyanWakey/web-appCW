@@ -30,7 +30,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+        $posts = Post::get();
+        return view('posts.create', ['posts' => $posts]);
     }
 
     /**
@@ -102,6 +103,9 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $post->delete();
+
+        return redirect()->route('posts.index')->with('message','Post was deleted');
     }
 }
