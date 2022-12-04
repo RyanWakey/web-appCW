@@ -42,8 +42,8 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'title' => 'required|max:255',
-            'description' => 'required|max:600',
+            'title' => 'required|max:150',
+            'description' => 'required|max:500',
         ]);
         
         //$userid = auth()->user(); 
@@ -52,6 +52,7 @@ class PostController extends Controller
         $post->description = $request->description;
         $post->user_id = 1; //$userid NEED TO CHANGE;
         $post->save();
+        session()->flash('message', 'Post was created');
 
         $id = $post->id;
         $postId = Post::findOrFail($id);
