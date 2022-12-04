@@ -6,7 +6,7 @@
     <p> The posts from the users:</p>
     <ul>
         @foreach($posts as $post)
-            <li><a href='{{ route('posts.show', ['id' => $post->id]) }}'>{{ $post ->title }}</a></li><br>
+            <li><a href='{{ route('posts.show', ['post' => $post->id]) }}'>{{ $post ->title }}</a></li><br>
         @endforeach
     </ul>
     <a href="{{ route('posts.create')}}">Create a Post</a><br><br><br>
