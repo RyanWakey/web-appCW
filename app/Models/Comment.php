@@ -11,7 +11,7 @@ class Comment extends Model
     
     //A comment belongs to a member
     public function member(){
-        return $this->belongsTo(Member::class);
+        return $this->belongsTo(User::class);
     }
 
     //A comment belongs to a post

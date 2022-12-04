@@ -18,14 +18,14 @@ class CommentTableSeeder extends Seeder
        //hardcoded Comment
        $c = new Comment;
        $c->description = "This is comment 1";
-       $c->member_id = 1;
+       $c->user_id = 1;
        $c->post_id = 1;
        $c->save();
        
        //hardcoded Comment 2
         $c2 = new Comment;
        $c2->description = "This is comment 2";
-       $c2->member_id = 1;
+       $c2->user_id = 1;
        $c2->post_id = 1;
        $c2->save(); 
 

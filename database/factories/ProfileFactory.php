@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\Profile;
-use App\Models\Member;
+use App\Models\User;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Profile>
  */
@@ -25,7 +25,7 @@ class ProfileFactory extends Factory
             'bio' => fake()->sentences($nbSentences = 3, $asText = true),
             
             //Already 2 hardcoded members with 2 hardcoded profiles, so range from 3 to rest of members.
-            'member_id' => fake()->unique()->numberBetween(3,Member::get()->count()),
+            'user_id' => fake()->unique()->numberBetween(3,User::get()->count()),
         ];
     }
 }

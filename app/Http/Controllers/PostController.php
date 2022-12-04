@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+
 use App\Models\Post;
 use App\Http\Controllers\Controller;
+
 
 class PostController extends Controller
 {
@@ -44,7 +46,14 @@ class PostController extends Controller
             'description' => 'required|max:600',
         ]);
         
-        return "passed val";
+        $userid = auth()->user(); 
+        $post = new Post;
+        $post->title = $request->title;
+        $post->description = $request->description;
+        $post->user_id = $userid;
+        $post->save();
+
+        return new PostResource($post->fresh());
     }
 
     /**

@@ -11,7 +11,7 @@ class Post extends Model
 
     // A post belongs to a Member
     public function member() {
-        return $this->belongsTo(Member::class); 
+        return $this->belongsTo(User::class); 
     }
     
     // A post has many comments

@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Profile;
-use App\Models\Member;
+use App\Models\User;
 
 class ProfileTableSeeder extends Seeder
 {
@@ -22,7 +22,7 @@ class ProfileTableSeeder extends Seeder
         $p->first_name = "Frank";
         $p->last_name = "Thomas";
         $p->bio = "I am very tall";
-        $p->member_id = 1;
+        $p->user_id= 1;
         $p->save();
         
         //hardcoded profile 2
@@ -31,10 +31,10 @@ class ProfileTableSeeder extends Seeder
         $p2->first_name = "ben";
         $p2->last_name = "za";
         $p2->bio = "my bio";
-        $p2->member_id = 2;
+        $p2->user_id = 2;
         $p2->save();
 
         // -2 as we already have 2 defined.
-        Profile::factory()->count(Member::get()->count()-2)->create();
+        Profile::factory()->count(User::get()->count()-2)->create();
     }
 }

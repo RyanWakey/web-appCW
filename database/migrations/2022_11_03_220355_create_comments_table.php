@@ -17,12 +17,12 @@ return new class extends Migration
             $table->id();
             $table->string('description');
             $table->bigInteger('post_id')->unsigned();
-            $table->bigInteger('member_id')->unsigned();
+            $table->bigInteger('user_id')->unsigned();
             $table->timestamps();
 
             $table->foreign('post_id')->references('id')->on('posts')
                 ->onDelete('cascade')->onUpdate('cascade'); 
-            $table->foreign('member_id')->references('id')->on('members')
+            $table->foreign('user_id')->references('id')->on('users')
                 ->onDelete('cascade')->onUpdate('cascade');   
         });
     }
