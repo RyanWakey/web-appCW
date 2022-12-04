@@ -46,14 +46,16 @@ class PostController extends Controller
             'description' => 'required|max:600',
         ]);
         
-        $userid = auth()->user(); 
+        //$userid = auth()->user(); 
         $post = new Post;
         $post->title = $request->title;
         $post->description = $request->description;
-        $post->user_id = $userid;
+        $post->user_id = 1; //$userid NEED TO CHANGE;
         $post->save();
 
-        return new PostResource($post->fresh());
+        $id = $post->id;
+        $postId = Post::findOrFail($id);
+        return view('posts.show', ['post' => $postId]);
     }
 
     /**

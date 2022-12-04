@@ -10,7 +10,7 @@ class Comment extends Model
     use HasFactory;
     
     //A comment belongs to a member
-    public function member(){
+    public function user(){
         return $this->belongsTo(User::class);
     }
 

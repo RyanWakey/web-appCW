@@ -10,7 +10,7 @@ class Post extends Model
     use HasFactory;
 
     // A post belongs to a Member
-    public function member() {
+    public function user() {
         return $this->belongsTo(User::class); 
     }
     
