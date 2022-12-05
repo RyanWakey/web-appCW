@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
+use App\Models\Comment;
+use App\Http\Controllers\Controller;
 
 class CommentController extends Controller
 {
@@ -23,7 +27,8 @@ class CommentController extends Controller
      */
     public function create()
     {
-        //
+        $comments = Comment::get();
+        return view('comments.create', ['comments' => $comments]);
     }
 
     /**
@@ -34,7 +39,7 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       
     }
 
     /**
