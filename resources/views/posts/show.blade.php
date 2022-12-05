@@ -9,8 +9,7 @@
         <li>Description {{$post->description}}</li>    
     </ul>
     <a href="{{ route('comments.create')}}">Create a Comment</a><br><br><br>
-    <form method="POST"
-        action="{{route('posts.destroy',['post' => $post->id]) }}">
+    <form method="POST" action="{{route('posts.destroy',['post' => $post->id]) }}">
         @csrf
         @method('DELETE')
         <button type="submit">Delete Post</button>
