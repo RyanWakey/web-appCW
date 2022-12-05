@@ -11,6 +11,6 @@
         <p>Description: <input type="text" name="description"
             value="{{ old('description')}}"></p>
         <input type="submit" value="Submit">
-        <a href="{{ route('posts.index') }}">Cancel</a>
+        <a href="{{ route('posts.show',['post' => $post])}}">Cancel</a>
     </form>
 @endsection
