@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+use App\Models\Post;
 use App\Models\Comment;
 use App\Http\Controllers\Controller;
 
@@ -25,10 +26,10 @@ class CommentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Post $post)
     {
         $comments = Comment::get();
-        return view('comments.create', ['comments' => $comments]);
+        return view('comments.create', ['post' => $post]);
     }
 
     /**
@@ -37,16 +38,19 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Post $post)
     {
         $validatedData = $request->validate([
             'description' => 'required|max:500',
         ]);
 
         $comment = new Comment;
-        $comment->description -> $request->description;
+        $comment->description = $request->description;
         $comment->user_id = 1; //userid NEED TO CHANGE TO LOGGED IN USER
         $comment->post_id = $request->input('post_id');
+        $comment->save();
+
+        return redirect()->route('posts.show' ,['post' => $post, 'comment' => $comment]);
 
     }
 
