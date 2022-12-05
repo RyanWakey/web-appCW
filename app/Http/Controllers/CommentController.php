@@ -39,7 +39,15 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-       
+        $validatedData = $request->validate([
+            'description' => 'required|max:500',
+        ]);
+
+        $comment = new Comment;
+        $comment->description -> $request->description;
+        $comment->user_id = 1; //userid NEED TO CHANGE TO LOGGED IN USER
+        $comment->post_id = $request->input('post_id');
+
     }
 
     /**
