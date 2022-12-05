@@ -11,8 +11,7 @@
             value="{{ old('title')}}"></p>
         <p>Description: <input type="text" name="description"
             value="{{ old('description')}}"></p>
-        <input type="submit" value="Submit">
-        <a href="{{route('posts.index') }}">Cancel</a>
-
+        <input type="submit" value="Submit">    
+        <a href="{{route('posts.index')}}">Cancel</a>
     </form>
 @endsection

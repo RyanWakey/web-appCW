@@ -18,7 +18,6 @@ class PostController extends Controller
      */
     public function index()
     {
-        
         $posts = Post::get();
         return view('posts.index', ['posts' => DB::table('posts')->paginate(20)]);
     }

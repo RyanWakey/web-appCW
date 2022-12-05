@@ -8,7 +8,7 @@
         Title: {{$post->title}}</li>
         <li>Description {{$post->description}}</li>    
     </ul>
-
+    <a href="{{ route('comments.create')}}">Create a Comment</a><br><br><br>
     <form method="POST"
         action="{{route('posts.destroy',['post' => $post->id]) }}">
         @csrf
