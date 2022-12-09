@@ -8,6 +8,12 @@
         Title: {{$post->title}}</li>
         <li>Description {{$post->description}}</li>    
     </ul>
+    @foreach($post->comments as $comment)
+        <ul>
+            Comment:
+            {{$comment->description}}
+        </ul>  
+    @endforeach
     <a href="{{ route('comments.create', ['post' => $post])}}">Create a Comment</a><br><br><br>
     <form method="POST" action="{{route('posts.destroy',['post' => $post->id]) }}">
         @csrf
