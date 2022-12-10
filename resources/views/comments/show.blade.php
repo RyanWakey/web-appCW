@@ -11,6 +11,12 @@
     @if(!Auth::user())
     @else 
         @if(auth()->user()->id == $comment->user->id)
+            <a href="{{ route('comments.edit',['post' => $post,'comment' => $comment])}}">Edit Comment</a>
+        @endif   
+    @endif
+    @if(!Auth::user())
+    @else 
+        @if(auth()->user()->id == $comment->user->id)
             <form method="POST" action="{{route('comments.destroy',['comment' => $comment->id]) }}">
             @csrf
             @method('DELETE')
