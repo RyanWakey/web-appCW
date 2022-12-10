@@ -46,7 +46,7 @@ class CommentController extends Controller
 
         $comment = new Comment;
         $comment->description = $request->description;
-        $comment->user_id = 1; //userid NEED TO CHANGE TO LOGGED IN USER
+        $comment->user_id = auth()->user()->id; 
         $comment->post_id = $request->input('post_id');
         $comment->save();
 
