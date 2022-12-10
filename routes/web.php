@@ -19,14 +19,14 @@ use Illuminate\Support\Facades\Route;
 Route::redirect('/' , 'posts');
 
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
-Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
-Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create')->middleware(['auth']);
+Route::post('/posts', [PostController::class, 'store'])->name('posts.store')->middleware(['auth']);
 Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
-Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
+Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy')->middleware(['auth']);
 
-Route::get('/posts/{post}/create', [CommentController::class, 'create'])->name('comments.create');
-Route::post('/post/{post}/comment', [CommentController::class, 'store'])->name('comments.store');
-Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
+Route::get('/posts/{post}/create', [CommentController::class, 'create'])->name('comments.create')->middleware(['auth']);;
+Route::post('/post/{post}/comment', [CommentController::class, 'store'])->name('comments.store')->middleware(['auth']);;
+Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy')->middleware(['auth']);;
 
 Route::get('/dashboard', function () {
     return view('dashboard');
