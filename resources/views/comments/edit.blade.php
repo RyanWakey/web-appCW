@@ -5,7 +5,7 @@
 
 @section('content')
 <p> Comment on this Post:</p>
-    <form method="POST" action="{{route('comments.update',['post' => $post])}}">
+    <form method="PATCH" action="{{route('comments.update',['post' => $post])}}">
         <input type="hidden" name="post_id" id="post_id" value="{{ $post->id }}" />
         @csrf
         <p>Description: <input type="text" name="description"
