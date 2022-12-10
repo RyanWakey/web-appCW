@@ -50,7 +50,7 @@ class PostController extends Controller
         $post = new Post;
         $post->title = $request->title;
         $post->description = $request->description;
-        $post->user_id = 1; //$userid NEED TO CHANGE;
+        $post->user_id = auth()->user()->id; //$userid NEED TO CHANGE;
         $post->save();
         session()->flash('message', 'Post was created');
 
