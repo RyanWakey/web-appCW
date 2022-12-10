@@ -4,13 +4,13 @@
 
 @section('content')
     <ul>
-        Post created by User: {{$post->user->username}}<br/>
+        Post created by User: {{$post->user->name}}<br/>
         Title: {{$post->title}}</li>
         <li>Description {{$post->description}}</li>    
     </ul>
     @foreach($post->comments as $comment)
         <ul>
-            User: {{$comment->user->username}} <br>
+            User: {{$comment->user->name}} <br>
             Comment: {{$comment->description}} <br>
         </ul>  
     @endforeach
