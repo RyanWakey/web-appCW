@@ -22,14 +22,14 @@ class UserTableSeeder extends Seeder
             $u = new User;
             $u->name = "FrankMan";
             $u->email = "Frank100@email.com";
-            $u->password = "secret";
+            $u->password = "Secret123";
             $u->save();
     
             //hardcoded user2
             $u2 = new User;
             $u2->name = "BenzO";
             $u2->email = "benz@email.com";
-            $u2->password = "notsecret";
+            $u2->password = "Notsecret123";
             $u2->save();
     
             // Creates 40 users with random data

@@ -10,6 +10,5 @@
         @endforeach
     </ul>
     <a href="{{ route('posts.create')}}">Create a Post</a><br><br><br>
-    
    {{ $posts -> links('pagination::tailwind')}}
 @endsection

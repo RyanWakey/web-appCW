@@ -45,12 +45,11 @@ class PostController extends Controller
             'title' => 'required|max:150',
             'description' => 'required|max:500',
         ]);
-        
-        //$userid = auth()->user(); 
+         
         $post = new Post;
         $post->title = $request->title;
         $post->description = $request->description;
-        $post->user_id = auth()->user()->id; //$userid NEED TO CHANGE;
+        $post->user_id = auth()->user()->id; 
         $post->save();
         session()->flash('message', 'Post was created');
 
