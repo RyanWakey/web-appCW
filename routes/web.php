@@ -24,9 +24,10 @@ Route::post('/posts', [PostController::class, 'store'])->name('posts.store')->mi
 Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
 Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy')->middleware(['auth']);
 
-Route::get('/posts/{post}/create', [CommentController::class, 'create'])->name('comments.create')->middleware(['auth']);;
-Route::post('/post/{post}/comment', [CommentController::class, 'store'])->name('comments.store')->middleware(['auth']);;
-Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy')->middleware(['auth']);;
+Route::get('/posts/{post}/create', [CommentController::class, 'create'])->name('comments.create')->middleware(['auth']);
+Route::get('/posts/{post}/{comment}', [CommentController::class, 'show'])->name('comments.show');
+Route::post('/post/{post}/comment', [CommentController::class, 'store'])->name('comments.store')->middleware(['auth']);
+Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy')->middleware(['auth']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

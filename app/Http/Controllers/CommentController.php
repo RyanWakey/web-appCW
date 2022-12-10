@@ -60,9 +60,9 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Post $post, Comment $comment)
     {
-        //
+        return view('comments.show', ['post' => $post, 'comment' => $comment]);
     }
 
     /**

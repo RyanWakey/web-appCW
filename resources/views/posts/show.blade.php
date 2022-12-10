@@ -13,7 +13,7 @@
     @foreach($post->comments as $comment)
         <ul>
             User: {{$comment->user->name}} <br>
-            Comment: {{$comment->description}} <br>
+        <a href="{{route('comments.show', ['post' => $post, 'comment' => $comment])}}"> Comment:</a> {{$comment->description}} <br>
         </ul>  
     @endforeach
     <a href="{{ route('comments.create', ['post' => $post])}}">Create a Comment</a><br><br><br>
