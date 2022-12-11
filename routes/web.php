@@ -30,8 +30,8 @@ Route::get('/posts/{post}/create', [CommentController::class, 'create'])->name('
 Route::post('/post/{post}/comment', [CommentController::class, 'store'])->name('comments.store')->middleware(['auth']);
 Route::get('/posts/{post}/{comment}', [CommentController::class, 'show'])->name('comments.show');
 Route::get('/posts/{post}/{comment}/edit', [CommentController::class, 'edit'])->name('comments.edit')->middleware(['auth']);
-Route::patch('/comments/{comment}', [CommentController::class, 'update'])->name('comments.update')->middleware(['auth']);
-Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy')->middleware(['auth']);
+Route::patch('/posts/{post}/{comment}', [CommentController::class, 'update'])->name('comments.update')->middleware(['auth']);
+Route::delete('/posts/{post}/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy')->middleware(['auth']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
