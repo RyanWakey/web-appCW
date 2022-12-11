@@ -33,6 +33,9 @@ Route::get('/posts/{post}/{comment}/edit', [CommentController::class, 'edit'])->
 Route::patch('/posts/{post}/{comment}', [CommentController::class, 'update'])->name('comments.update')->middleware(['auth']);
 Route::delete('/posts/{post}/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy')->middleware(['auth']);
 
+Route::get('/user',[UserController::class, 'index'])->name('user.index');
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
