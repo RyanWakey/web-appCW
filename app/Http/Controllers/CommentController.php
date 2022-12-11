@@ -28,7 +28,6 @@ class CommentController extends Controller
      */
     public function create(Post $post)
     {
-        $comments = Comment::get();
         return view('comments.create', ['post' => $post]);
     }
 
@@ -50,7 +49,7 @@ class CommentController extends Controller
         $comment->post_id = $request->input('post_id');
         $comment->save();
 
-        return redirect()->route('posts.show' ,['post' => $post]);
+        return redirect()->route('posts.show' ,['post' => $post])->with('message', 'Comment was Stored');
 
     }
 
@@ -83,7 +82,7 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post, Comment $comment)
+    public function update(Request $request,Post $post, Comment $comment)
     {
         $validatedData = $request->validate([
             'description' => 'required|max:500',
@@ -91,8 +90,8 @@ class CommentController extends Controller
 
         $comment->description = $request->description;
         $comment->save();
-        session()->flash('message', 'Comment was updated');
-        return redirect()->route('posts.show' ,['post' => $post]);
+        
+        return redirect()->route('posts.show', ['post' => $post])->with('message', 'Comment was Updated');
     }
 
     /**

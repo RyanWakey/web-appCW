@@ -1,12 +1,11 @@
 @extends('layouts.basic')
 
-@section('title','New Comment')
+@section('title','Edit Comment')
     
-
 @section('content')
 
 <p> Edit Comment:</p>
-    <form method="POST" action="{{route('comments.update',['comment' => $comment->id])}}">
+    <form method="POST" action="{{route('comments.update',['post' => $post, 'comment' => $comment])}}">
         @csrf
         @method('patch')
         <p>Description: <input type="text" name="description" value="{{ old('description')}}"></p>

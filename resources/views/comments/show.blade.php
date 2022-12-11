@@ -17,7 +17,7 @@
     @if(!Auth::user())
     @else 
         @if(auth()->user()->id == $comment->user->id)
-            <form method="POST" action="{{route('comments.destroy',['comment' => $comment->id]) }}">
+            <form method="POST" action="{{route('comments.destroy',[ 'post' => $post, 'comment' => $comment->id]) }}">
             @csrf
             @method('DELETE')
             <button type="submit">Delete Comment</button>
