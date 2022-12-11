@@ -18,7 +18,6 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::get();
         return view('posts.index', ['posts' => DB::table('posts')->paginate(20)]);
     }
 
@@ -51,11 +50,8 @@ class PostController extends Controller
         $post->description = $request->description;
         $post->user_id = auth()->user()->id; 
         $post->save();
-        session()->flash('message', 'Post was created');
 
-        $id = $post->id;
-        $postId = Post::findOrFail($id);
-        return view('posts.show', ['post' => $postId]);
+        return view('posts.show', ['post' => $post])->with('message', 'Post was Created');
     }
 
     /**

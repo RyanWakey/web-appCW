@@ -33,4 +33,5 @@
             </form>
         @endif
     @endif
+    <a href="{{ route('posts.index')}}">Return</a><br><br><br>
 @endsection
