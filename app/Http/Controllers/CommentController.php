@@ -50,7 +50,7 @@ class CommentController extends Controller
         $comment->post_id = $request->input('post_id');
         $comment->save();
 
-        return redirect()->route('posts.show' ,['post' => $post, 'comment' => $comment]);
+        return redirect()->route('posts.show' ,['post' => $post]);
 
     }
 
@@ -92,7 +92,7 @@ class CommentController extends Controller
         $comment->description = $request->description;
         $comment->save();
         session()->flash('message', 'Comment was updated');
-        return redirect()->route('posts.show', ['post' => $post, 'comment' => $comment]);
+        return redirect()->route('posts.show' ,['post' => $post]);
     }
 
     /**
