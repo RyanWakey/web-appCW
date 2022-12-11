@@ -9,6 +9,12 @@
         Title: {{$post->title}}<br>
         Description: {{$post->description}}<br>
     </ul>
+    @if(!Auth::user())
+    @else 
+        @if(auth()->user()->id == $post->user->id)
+            <a href="{{route('posts.edit', ['post' => $post])}}">Edit Post </a><br>      
+        @endif
+    @endif
     <b>Comments: </b><br>
     @foreach($post->comments as $comment)
         <ul>
