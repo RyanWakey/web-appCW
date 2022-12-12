@@ -49,9 +49,20 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(User $user)
-    {
-        return view('users.show', ['user' => $user, 'posts' => $user->posts->sortByDesc('created_at'),
-        'comments' => $user->posts->sortByDesc('created_at')]);
+    {   
+        
+        $collection = collect();
+        
+        foreach($user->posts as $post)
+            $collection->push($post);
+        
+
+        foreach($user->comments as $comment)
+            $collection->push($comment);
+        
+
+        return view('users.show', ['user' => $user, 'collection' => $collection->sortByDesc('created_at')]);
+
     }
 
     /**
