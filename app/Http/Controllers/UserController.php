@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
+
 use App\Models\User;
+use App\Models\Post;
+use App\Models\Comment;
 
 use Illuminate\Http\Request;
 
@@ -47,8 +50,8 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return view('users.show', ['user' => $user, 'posts' => DB::table('posts')->orderByDesc('created_at'),
-         'comments' => DB::table('comments')]);
+        return view('users.show', ['user' => $user, 'posts' => $user->posts->sortByDesc('created_at'),
+        'comments' => $user->posts->sortByDesc('created_at')]);
     }
 
     /**
