@@ -5,30 +5,31 @@
 @section('content')
     
     <p> The posts and comments from User <b>{{$user->name}}:</b></p>
-    
-    @foreach($user->posts as $post)
-        <ul>
-            @if(count($user->posts) > 0)
+    @if(count($user->posts) > 0)
+        @foreach($user->posts as $post)
+            <ul>
                 Posts: 
-                    Created at: {{$post->created_at}}<br>
-                    title: {{$post->title}}<br>
-                    description {{$post->description}}<br>
-            @else
-                {{$user->name}} has made no posts.
-            @endif
-        </ul>
-    @endforeach
+                    Post Created at: {{$post->created_at}}<br>
+                    Post title: {{$post->title}}<br>
+                    Post description {{$post->description}}<br>
+            </ul>
+        @endforeach               
+    @else
+        {{$user->name}} has made no Posts.
+    @endif
+       
     
-    @foreach($user->comments as $comment)
-        <ul>    
-            @if(count($user->comments) > 0)
+    @if(count($user->comments) > 0)
+        @foreach($user->comments as $comment)
+            <ul>    
                 Comments: 
-                    Created at: {{$comment->created_at}}
-                    description {{$comment->description}}
-            @else
-                {{$user->name}} has made no comments.
-            @endif
-        </ul>
-    @endforeach
+                    Comment Created at: {{$comment->created_at}}
+                    Comment description {{$comment->description}}
+            </ul>
+        @endforeach
+    @else
+        {{$user->name}} has made no Comments.
+    @endif
+    
 
 @endsection
