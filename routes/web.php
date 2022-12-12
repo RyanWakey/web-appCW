@@ -34,7 +34,7 @@ Route::get('/posts/{post}/{comment}/edit', [CommentController::class, 'edit'])->
 Route::patch('/posts/{post}/{comment}', [CommentController::class, 'update'])->name('comments.update')->middleware(['auth']);
 Route::delete('/posts/{post}/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy')->middleware(['auth']);
 
-Route::get('/userview',[UserController::class, 'show'])->name('users.show');
+Route::get('/userview/{user}',[UserController::class, 'show'])->name('users.show');
 
 
 Route::get('/dashboard', function () {

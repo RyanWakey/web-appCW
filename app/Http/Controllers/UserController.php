@@ -47,7 +47,8 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return view('users.index', ['user' => $user, 'posts' => DB::table('posts'), 'comments' => DB::table('comments')]);
+        return view('users.show', ['user' => $user, 'posts' => DB::table('posts')->orderByDesc('created_at'),
+         'comments' => DB::table('comments')]);
     }
 
     /**
