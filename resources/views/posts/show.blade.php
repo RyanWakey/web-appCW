@@ -5,7 +5,8 @@
 @section('content')
 <b>Post: </b>
     <ul>
-        Post created by User: {{$post->user->name}}<br>
+        Post created by User: <a href="{{route('users.show',['user' => $post->user])}}"> 
+            {{$post->user->name}}</a><br>
         Title: {{$post->title}}<br>
         Description: {{$post->description}}<br>
     </ul>

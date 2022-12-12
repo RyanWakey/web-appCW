@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\DB;
+use App\Models\User;
 
 use Illuminate\Http\Request;
 
@@ -13,8 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('users.index', ['posts' => DB::table('posts'), 'comments' => DB::table('comments')]
-        ->paginate(20));
+       //
     }
 
     /**
@@ -44,9 +45,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        //
+        return view('users.index', ['user' => $user, 'posts' => DB::table('posts'), 'comments' => DB::table('comments')]);
     }
 
     /**
