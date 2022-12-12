@@ -1,13 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\DB;
 
 use App\Models\User;
 use App\Models\Post;
 use App\Models\Comment;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\Helpers\PaginatorHelper;
 
 class UserController extends Controller
 {
@@ -58,10 +59,10 @@ class UserController extends Controller
         
 
         foreach($user->comments as $comment)
-            $collection->push($comment);
+            $collection->push($comment); 
+          
         
-
-        return view('users.show', ['user' => $user, 'collection' => $collection->sortByDesc('created_at')]);
+        return view('users.show', ['user' => $user, 'collection' => $collection->sortByDesc('created_at')->paginate(12)]);
 
     }
 

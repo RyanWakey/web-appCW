@@ -17,6 +17,7 @@
         @endif
 @endforeach
 
+{{$collection->links('pagination::tailwind')}}
     
 
 @endsection
