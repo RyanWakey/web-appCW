@@ -51,19 +51,16 @@ class UserController extends Controller
      */
     public function show(User $user)
     {   
-        
         $collection = collect();
         
         foreach($user->posts as $post)
             $collection->push($post);
         
-
         foreach($user->comments as $comment)
             $collection->push($comment); 
           
-        
-        return view('users.show', ['user' => $user, 'collection' => $collection->sortByDesc('created_at')->paginate(12)]);
-
+        return view('users.show', ['user' => $user,'post' => $post, 'collection' => $collection->
+        sortByDesc('created_at')->paginate(12)]);
     }
 
     /**

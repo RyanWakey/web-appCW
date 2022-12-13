@@ -17,7 +17,8 @@
         @endif
 @endforeach
 
+<a href="{{ route('posts.show', ['post' => $post])}}">Return</a><br><br>
+
 {{$collection->links('pagination::tailwind')}}
     
-
 @endsection

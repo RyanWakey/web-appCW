@@ -6,7 +6,7 @@
 <b>Post: </b>
 
     <ul>
-        Post created by User: <a href="{{route('users.show',['user' => $post->user])}}"> 
+        Post created by User: <a href="{{route('users.show',['user' => $post->user, 'post' => $post])}}"> 
             {{$post->user->name}}</a><br>
         Title: {{$post->title}}<br>
         Description: {{$post->description}}<br>
