@@ -14,7 +14,7 @@
 
     @if(!Auth::user())
     @else 
-        @if(auth()->user()->id == $post->user->id)
+        @if(auth()->user()->id == $post->user->id || auth()->user()->admin == true)
             <a href="{{route('posts.edit', ['post' => $post])}}">Edit Post </a><br>      
         @endif
     @endif
@@ -31,8 +31,8 @@
 
     @if(!Auth::user())
     @else 
-        @if(auth()->user()->id == $post->user->id)
-            <form method="POST" action="{{route('posts.destroy',['post' => $post->id]) }}">
+        @if(auth()->user()->id == $post->user->id || auth()->user()->admin == true)
+            <form method="POST" action= "{{route('posts.destroy',['post' => $post->id]) }}">
             @csrf
             @method('DELETE')
             <button type="submit">Delete Post</button>
