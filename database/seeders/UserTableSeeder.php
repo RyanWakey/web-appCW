@@ -21,7 +21,7 @@ class UserTableSeeder extends Seeder
             //hardcoded user
             $u = new User;
             $u->name = "FrankMan";
-            $u->role = "superAdmin";
+            $u->admin = true;
             $u->email = "Frank100@email.com";
             $u->password = "Secret123";
             $u->save();
@@ -29,7 +29,7 @@ class UserTableSeeder extends Seeder
             //hardcoded user2
             $u2 = new User;
             $u2->name = "BenzO";
-            $u2->role = "admin";
+            $u2->admin = false;
             $u2->email = "benz@email.com";
             $u2->password = "Notsecret123";
             $u2->save();

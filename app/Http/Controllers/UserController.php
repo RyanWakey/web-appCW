@@ -50,7 +50,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(User $user)
-    {   
+        {   
         $collection = collect();
         
         foreach($user->posts as $post)
