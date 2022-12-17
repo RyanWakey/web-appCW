@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="adsad">
+<div class="">
         <p> The posts from the Users:</p>
         <ul>
             @foreach($posts as $post)

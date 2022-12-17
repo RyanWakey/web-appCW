@@ -4,19 +4,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Laravel') }}</title>
     
     <title>Blog - @yield('title')</title>
      <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
 
-    <!-- CSS and Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <!-- CSS -->
+    @vite('resources/css/app.css')
 </head>
 
 <div class="flex-auto p-6">
-    <h1 class="flex-auto text-lg font-semibold text-green-500"> Blog - @yield('title') </h1>
+    <h1 class="flex-auto text-lg font-semibold text-green-200"> Blog - @yield('title') </h1>
 </div>
 
 <body class="antialiased">
