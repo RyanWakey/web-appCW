@@ -2,7 +2,6 @@
 
 @section('title','New Post')
     
-
 @section('content')
 <p> Enter the details below to create a Post</p>
     <form method="POST" action="{{route('posts.store')}}">

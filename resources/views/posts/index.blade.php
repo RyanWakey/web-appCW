@@ -3,12 +3,18 @@
 @section('title','User Posts')
 
 @section('content')
-    <p> The posts from the Users:</p>
-    <ul>
-        @foreach($posts as $post)
-            <li><a href='{{ route('posts.show', ['post' => $post->id]) }}'>{{ $post->title }}</a></li><br>
-        @endforeach
-    </ul>
+
+<div class="adsad">
+        <p> The posts from the Users:</p>
+        <ul>
+            @foreach($posts as $post)
+                <li> Posted by: {{$post->user->name}} </li>
+                <a href='{{ route('posts.show', ['post' => $post->id]) }}'>{{ $post->title }}</a><br><br>
+            @endforeach
+        </ul>
+    </div> 
     <a href="{{ route('posts.create')}}">Create a Post</a><br><br><br>
+
    {{ $posts -> links('pagination::tailwind')}}
+
 @endsection

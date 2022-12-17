@@ -18,7 +18,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('posts.index', ['posts' => DB::table('posts')->paginate(15)]);
+        $posts = Post::with('user')->get()->paginate(15);
+        return view('posts.index', ['posts' => $posts]);
     }
 
     /**
