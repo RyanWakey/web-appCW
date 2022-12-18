@@ -16,12 +16,12 @@
             @csrf
             <div class="flex-auto space-x-4 mb-6 text-lg font-medium">
                 <p>Title: <input type="text" name="title" value="{{ old('title')}}" 
-                    style="height:100px;font-size:12pt;width:800px;"></p>
+                    style="height:100px;font-size:12pt;width:1000px;"></p>
             </div>
 
             <div class="flex-auto space-x-4 mb-6 text-lg font-medium">
                 <p>Description: <input type="text" name="description" value="{{ old('description')}}"
-                    style="height:450px;font-size:12pt;width:800px;"></p>
+                    style="height:450px;font-size:12pt;width:1000px;"></p>
             </div>
 
             <div class="flex space-x-4 mb-6 text-sm font-medium">
