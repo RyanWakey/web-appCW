@@ -8,6 +8,7 @@
     <div class="font-mono text-2xl">
         <p>All Posts Created From Users:</p><br>
     </div>
+    
         <div class="px-6">
         <ul>
             @foreach($posts as $post)
