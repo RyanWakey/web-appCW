@@ -13,12 +13,12 @@
     @vite('resources/css/app.css')
 </head>
 
-<div class="flex-auto p-4 bg-blue-500 neutral">
-    <h1 class="flex-auto p-2 bg-blue-400 text-3xl font-semibold text-yellow-400 shadow"> Blog - @yield('title')
+<div class="flex-auto p-4 bg-blue-400 neutral">
+    <h1 class="flex-auto p-2 bg-blue-600 text-3xl font-semibold text-red-900 shadow"> Blog - @yield('title')
         @if (Route::has('login'))
             <div class="hidden absolute top-0 right-0 px-6 py-2 sm:block">
                 @auth
-                    <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
+                    <a href="{{ url('/dashboard') }}" class="text-sm text-red-700 dark:text-gray-500 underline">Dashboard</a>
                 @else
                     <a href="{{ route('login') }}" class="text-sm text-red-700 text-right dark:text-gray-500 underline">Log in</a>
 
@@ -32,8 +32,7 @@
     </h1>
 </div>
 
-<body class="antialiased">
-    <div class="items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
+<body class="antialiased bg-blue-300">
         @if ($errors->any())
             <div>
                 Errors:
@@ -51,8 +50,7 @@
 
         <div>
             @yield('content')
-        </div>
-    
+        </div> 
 </body>
 
 </html>
