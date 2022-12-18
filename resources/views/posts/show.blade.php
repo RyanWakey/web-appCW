@@ -3,43 +3,64 @@
 @section('title','Post')
 
 @section('content')
-<b>Post: </b>
 
-    <ul>
-        Post created by User: <a href="{{route('users.show',['user' => $post->user, 'post' => $post])}}"> 
-            {{$post->user->name}}</a><br>
-        Title: {{$post->title}}<br>
-        Description: {{$post->description}}<br>
-    </ul>
+<div class="flex-auto px-6 py-2 text-lg font-sans">
 
-    @if(!Auth::user())
-    @else 
-        @if(auth()->user()->id == $post->user->id || auth()->user()->admin == true)
-            <a href="{{route('posts.edit', ['post' => $post])}}">Edit Post </a><br>      
-        @endif
-    @endif
+    <div class="font-mono text-2xl font-semibold py-2">
+        Post:
+    </div>
 
-    <b>Comments: </b><br>
-    @foreach($post->comments as $comment)
+    <div class="flex-auto px-4 py-2 text-base bg-orange-600 text-green-500">
         <ul>
-            User: {{$comment->user->name}} <br>
-        <a href="{{route('comments.show', ['post' => $post, 'comment' => $comment])}}"> Comment: </a> {{$comment->description}} <br>
-        </ul>  
-    @endforeach
+            Post created by User: 
+            <span class="text-purple-900 text-semibold italic underline">
+                <a href="{{route('users.show',['user' => $post->user, 'post' => $post])}}">       
+                {{$post->user->name}}</a><br>
+            </span>
+            Title:  {{$post->title}}<br>
+            Description: {{$post->description}}<br><br>
+        </ul>
+        
+        <div class="flex space-x-4 mb-6 text-sm font-medium">
+            <div class="flex-auto flex space-x-20">
+                @if(!Auth::user())
+                @else 
+                    @if(auth()->user()->id == $post->user->id || auth()->user()->admin == true)
+                        <button class="h-10 px-6 font-semibold rounded-md border border-black text-slate-900 bg-white" type="button">
+                            <a href="{{route('posts.edit', ['post' => $post])}}">Edit Post  </a>
+                        </button>    
+                    @endif
+                @endif
 
-    <a href="{{ route('comments.create', ['post' => $post])}}">Create a Comment</a><br><br><br>
+                @if(!Auth::user())
+                @else 
+                    @if(auth()->user()->id == $post->user->id || auth()->user()->admin == true)
+                        <form method="POST" action= "{{route('posts.destroy',['post' => $post->id]) }}">
+                        @csrf
+                        @method('DELETE')
+                        <button class="h-10 px-6 font-black rounded-md border border-black text-slate-900 bg-white" 
+                        type="submit">Delete Post</button>
+                        </form>
+                    @endif
+                @endif
+            </div>
+        </div>
+    </div>
 
-    @if(!Auth::user())
-    @else 
-        @if(auth()->user()->id == $post->user->id || auth()->user()->admin == true)
-            <form method="POST" action= "{{route('posts.destroy',['post' => $post->id]) }}">
-            @csrf
-            @method('DELETE')
-            <button type="submit">Delete Post</button>
-            </form>
-        @endif
-    @endif
+    <div class="font-mono text-2xl font-semibold py-4">
+        Comments: <br>
+    </div>
 
+    <div class="flex-auto px-4 py-2 text-base bg-orange-600 text-green-500">
+        @foreach($post->comments as $comment)
+            <ul>
+                User: {{$comment->user->name}} <br>
+            <a href="{{route('comments.show', ['post' => $post, 'comment' => $comment])}}"> Comment: </a> {{$comment->description}} <br>
+            </ul>  
+        @endforeach
+
+        <a href="{{ route('comments.create', ['post' => $post])}}">Create a Comment</a><br><br><br>
+    </div>
     <a href="{{ route('posts.index')}}">Return</a><br><br><br>
-    
+</div>
 @endsection

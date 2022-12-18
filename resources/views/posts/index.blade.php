@@ -11,7 +11,7 @@
         <div class="px-6">
         <ul>
             @foreach($posts as $post)
-                <div class="bg-blue-600 text-green-500 font-semibold">
+                <div class="bg-orange-600 text-green-500 font-semibold">
                     Posted by User: <a href="{{route('users.show',['user' => $post->user, 'post' => $post])}}">
                         <u><i>{{$post->user->name}}</i></u><br>
                     <div class="px-6 py-1">
