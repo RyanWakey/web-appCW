@@ -62,7 +62,8 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {   
-        return view('posts.show', ['post' => $post]);
+        $commentPaginate = $post->comments->paginate(5);
+        return view('posts.show', ['post' => $post, 'commentPaginate' => $commentPaginate]);
     }
 
     /**

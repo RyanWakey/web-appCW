@@ -12,6 +12,7 @@
     </div>  
 
     <div class="px-6">
+
         <form method="POST" action="{{route('posts.store')}}">
             @csrf
             <div class="flex-auto space-x-4 mb-6 text-lg font-medium">
@@ -26,18 +27,24 @@
 
             <div class="flex space-x-4 mb-6 text-sm font-medium">
                 <div class="flex-auto flex space-x-20">
+
                     <button class="h-10 px-6 mb-4 font-semibold rounded-md bg-black text-white absolute right-8" 
                     type="submit" value="Submit">Submit
-                    <button class="h-10 px-6 mb-4 font-semibold rounded-md border 
-                    border-black text-slate-900 bg-white" type="button">    
-                    <a href="{{route('posts.index')}}">Canel</a>    
                     </button>
+
+                    <button class="h-10 px-6 mb-4 font-semibold rounded-md border border-black text-slate-900 bg-white" 
+                    type="button">    
+                        <a href="{{route('posts.index')}}">Cancel</a>    
+                    </button>
+
                 </div>
             </div>
+
         </form>  
+        
     </div>
 
-    </div>
+    </div> 
 </div>
 
 @endsection

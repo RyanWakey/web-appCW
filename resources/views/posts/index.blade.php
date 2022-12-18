@@ -8,7 +8,7 @@
     <div class="font-mono text-2xl">
         <p>All Posts Created From Users:</p><br>
     </div>
-    
+
         <div class="px-6">
         <ul>
             @foreach($posts as $post)
@@ -17,7 +17,8 @@
                         <u><i>{{$post->user->name}}</i></u><br>
                     <div class="px-6 py-1">
                         Post Title:
-                        <u><a href='{{ route('posts.show', ['post' => $post->id]) }}'>{{ $post->title }}</u></a><br>  
+                        <u><a href='{{ route('posts.show', ['post' => $post->id,'postcomments' 
+                        => $post->comments]) }}'>{{ $post->title }}</u></a><br>  
                     </div>
                 </div>   
                 <br>
@@ -34,4 +35,5 @@
     {{ $posts -> links('pagination::tailwind')}}
 </div>
 
+</div>
 @endsection
