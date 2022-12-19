@@ -12,7 +12,7 @@
     </div>  
 
     <div class="px-6">
-
+        
         <form method="POST" action="{{route('posts.store')}}">
             @csrf
             <div class="flex-auto space-x-4 mb-6 text-lg font-medium">
@@ -44,7 +44,7 @@
         
     </div>
 
-    </div> 
+    </div>
 </div>
 
 @endsection

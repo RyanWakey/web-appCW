@@ -58,11 +58,13 @@
                     User: 
                     <span class="text-purple-900 font-extrabold italic underline">
                         <a href="{{route('users.show',['user' => $post->user, 'post' => $post])}}"> 
-                        {{$comment->user->name}}<br>
+                        {{$comment->user->name}}<br></a>
                     </span>
+                    Comment:
                     <span class="text-purple-900 font-extrabold underline">
-                    <a href="{{route('comments.show', ['post' => $post, 'comment' => $comment])}}"> 
-                        Comment: </a> {{$comment->description}}<br>
+                         <a href="{{route('comments.show', ['post' => $post, 'comment' => $comment])}}"> 
+                            {{$comment->description}}<br></a>
+                    </span>
                 </div> 
                 <br>
             @endforeach
