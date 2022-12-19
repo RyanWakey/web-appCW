@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\UserController;
+use App\Http\Livewire\PostComment;
 use Illuminate\Support\Facades\Route;
 
 
@@ -28,8 +29,10 @@ Route::get('/posts/{post}/edit', [PostController::class, 'edit'])->name('posts.e
 Route::patch('/posts/{post}' , [PostController::class, 'update'])->name('posts.update')->middleware(['auth']);
 Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy')->middleware(['auth']);
 
+Route::post('/posts/{post}', [PostComment::class, 'saveComment']);
+
 Route::get('/posts/{post}/create', [CommentController::class, 'create'])->name('comments.create')->middleware(['auth']);
-Route::post('/post/{post}/comment', [CommentController::class, 'store'])->name('comments.store')->middleware(['auth']);
+Route::post('/posts/{post}/comment', [CommentController::class, 'store'])->name('comments.store')->middleware(['auth']);
 Route::get('/posts/{post}/{comment}', [CommentController::class, 'show'])->name('comments.show');
 Route::get('/posts/{post}/{comment}/edit', [CommentController::class, 'edit'])->name('comments.edit')->middleware(['auth']);
 Route::patch('/posts/{post}/{comment}', [CommentController::class, 'update'])->name('comments.update')->middleware(['auth']);

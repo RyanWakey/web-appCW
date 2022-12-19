@@ -46,14 +46,15 @@
             @endif
         </div>
     </div>
+    
     <div class="font-mono text-2xl font-semibold py-4">
         Comments: <br>
     </div>
 
-    <div class="py-4"
+    <div class="py-4">
         @if(!Auth::user())
         @else
-            <livewire:post-comment/>
+            @livewire('post-comment',['post' => $post->id])
         @endif
     </div>
     

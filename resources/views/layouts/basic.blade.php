@@ -11,6 +11,8 @@
 
     <!-- CSS -->
     @vite('resources/css/app.css')
+
+    @livewireStyles
 </head>
 
 <div class="flex-auto p-4 bg-blue-400 neutral">
@@ -33,7 +35,8 @@
 </div>
 
 <body class="antialiased bg-blue-300">
-        @if ($errors->any())
+    @livewireScripts    
+    @if ($errors->any())
             <div>
                 Errors:
                 <ul>

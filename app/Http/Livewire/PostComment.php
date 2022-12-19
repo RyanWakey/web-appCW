@@ -2,23 +2,34 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Post;
 use Livewire\Component;
 
+use App\Models\Comment;
+use App\Models\Post;
+
+
 class PostComment extends Component
-{
-    public function storeComment(Request $request,Post $post)
+{   
+    public $post;
+    public $description;
+
+    public function mount(Post $post)
+    {
+        $this->post = $post;
+    }
+
+    public function saveComment()
     {   
-        $validatedData = $request->validate([
+        $validatedData = $this->validate([
             'description' => 'required|max:500',
         ]);
-        
+
         $comment = new Comment;
-        $comment->description = $request->description;
+        $comment->description = $this->description;
         $comment->user_id = auth()->user()->id; 
-        $comment->post_id = $request->input('post_id');
+        $comment->post_id = $this->post->id;
         $comment->save();
- 
+
     }
 
     public function render()

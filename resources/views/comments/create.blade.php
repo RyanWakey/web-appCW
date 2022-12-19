@@ -13,7 +13,7 @@
     <div class="px-2 bg-red-600 text-slate-900 font-semibold">
         <form method="POST" action="{{route('comments.store',['post' => $post])}}">
             <div class="flex-auto space-x-4 mb-6 text-lg font-medium">
-                <input type="hidden" name="post_id" id="post_id" value="{{ $post->id }}" />
+                <input type="hidden" name="post_id" id="post_id" value="{{ $post->id }}"/>
                 @csrf
                 <br><p>Description: <input type="text" name="description"value="{{ old('description')}}" 
                 style="height:100px;font-size:12pt;width:1100px;"></p><br>
