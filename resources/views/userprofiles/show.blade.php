@@ -4,20 +4,31 @@
 
 @section('content')
 
-<div class="px-4 py-4">
+<div class="px-6 py-4">
     <div class="font-mono text-1xl">
         User Profile:
     </div>
-    <i> Display Name </i>
-    {{$user->profile->display_name}}<br>
-    <i> First Name </i>
-    {{$user->profile->first_name}}
-    <i> Surname </i>
-    {{$user->profile->last_name}}
-    <i> Date of Birth </i>
-    {{$user->profile->date_of_birth}}
-    <i> Bio </i>
-    {{$user->profile->bio}}
+    <div class="flex-auto px-6 py-4 font-semibold bg-red-500 text-black-900 shadow ">
+        <i> Display Name - </i>
+        <span class="font-black">
+            {{$user->profile->display_name}}<br><br>
+        </span>
+        <i> First Name - </i>
+        <span class="font-black">
+            {{$user->profile->first_name}}<br><br>
+        </span>
+        <i> Surname - </i>
+        <span class="font-black">
+            {{$user->profile->last_name}}<br><br>
+        </span>
+        <i> Date of Birth - </i>
+        <span class="font-black">
+            {{$user->profile->date_of_birth}}<br><br>
+        </span>
+        <i> Bio - </i>
+        <span class="font-black">
+            {{$user->profile->bio}}<br><br>
+        </span>
     
     </div>
 
