@@ -28,7 +28,7 @@
                 @else 
                 @if(auth()->user()->id == $post->user->id || auth()->user()->admin == true)
                     <button class="h-10 px-6 font-semibold rounded-md border border-black text-slate-900 bg-white" type="button">
-                        <a href="{{route('posts.edit', ['post' => $post])}}">Edit Post  </a>
+                        <a href="{{route('posts.edit', ['post' => $post])}}">Edit Post</a>
                     </button>   
                 @endif
             @endif

@@ -33,14 +33,12 @@
 
             <div class="flex space-x-4 mb-2 text-sm font-medium">
                 <div class="flex-auto flex space-x-20">
-        
                     <button class="h-10 px-6 font-semibold rounded-md bg-black text-white absolute right-8" 
                         type="submit" value="Submit">Submit
                     </button>
-        
                     <button class="h-10 px-6 font-semibold rounded-md border border-black text-slate-900 bg-white" 
                         type="button">    
-                            <a href="{{route('posts.index')}}">Cancel</a>    
+                            <a href="{{url()->previous()}}">Cancel</a>    
                     </button>
         </form>
     </div>

@@ -21,10 +21,10 @@
             <div class="hidden absolute top-0 right-0 px-6 py-2 sm:block">
                 @auth
                     @if(auth()->user()->profile != null)
-                        <a href="{{ route('userprofiles.show', ['user' => auth()->user()->id])}}" 
+                        <a href="{{ route('userprofiles.show', ['profile' => auth()->user()->profile])}}" 
                             class="text-sm font-black text-red-700 dark:text-gray-500 underline">View Profile</a>
                     @else
-                        <a href="{{route('userprofiles.create', ['user' => auth()->user()->id])}}"
+                        <a href="{{route('userprofiles.create', ['user' => auth()->user()->profile])}}"
                             class="text-sm font-black text-red-700 dark:text-gray-500 underline">View Profile</a>
                     @endif
                 @else
