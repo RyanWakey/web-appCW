@@ -7,7 +7,6 @@ use Livewire\Component;
 use App\Models\Comment;
 use App\Models\Post;
 
-
 class PostComment extends Component
 {   
     public $post;
@@ -29,7 +28,6 @@ class PostComment extends Component
         $comment->user_id = auth()->user()->id; 
         $comment->post_id = $this->post->id;
         $comment->save();
-
     }
 
     public function render()

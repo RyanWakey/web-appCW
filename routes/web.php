@@ -28,8 +28,7 @@ Route::get('/posts/{post}/edit', [PostController::class, 'edit'])->name('posts.e
 Route::patch('/posts/{post}' , [PostController::class, 'update'])->name('posts.update')->middleware(['auth']);
 Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy')->middleware(['auth']);
 
-Route::post('/posts/{post}', [PostComment::class, 'saveComment']);
-
+Route::post('/posts/{post}', [PostComment::class, 'saveComment'])->middleware(['auth']);
 Route::get('/posts/{post}/create', [CommentController::class, 'create'])->name('comments.create')->middleware(['auth']);
 Route::post('/posts/{post}/comment', [CommentController::class, 'store'])->name('comments.store')->middleware(['auth']);
 Route::get('/posts/{post}/{comment}', [CommentController::class, 'show'])->name('comments.show');
