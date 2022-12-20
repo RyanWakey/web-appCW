@@ -38,7 +38,6 @@ Route::patch('/posts/{post}/{comment}', [CommentController::class, 'update'])->n
 Route::delete('/posts/{post}/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy')->middleware(['auth']);
 
 
-
 Route::get('/userview/{user}',[UserController::class, 'show'])->name('users.show');
 
 Route::get('/userprofile/create', [UserProfileController::class, 'create'])->name('userprofiles.create');
