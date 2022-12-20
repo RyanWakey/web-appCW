@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserProfileController;
 use App\Http\Livewire\PostComment;
 use Illuminate\Support\Facades\Route;
 
@@ -38,6 +39,7 @@ Route::delete('/posts/{post}/{comment}', [CommentController::class, 'destroy'])-
 
 Route::get('/userview/{user}',[UserController::class, 'show'])->name('users.show');
 
+Route::get('/userprofile/{user}', [UserProfileController::class, 'show'])->name('userprofiles.show');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

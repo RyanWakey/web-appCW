@@ -35,7 +35,7 @@ class UserProfileController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('userprofiles.show');
     }
 
     /**

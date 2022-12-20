@@ -20,7 +20,7 @@
         @if (Route::has('login'))
             <div class="hidden absolute top-0 right-0 px-6 py-2 sm:block">
                 @auth
-                    <a href="{{ url('/dashboard') }}" class="text-sm text-red-700 dark:text-gray-500 underline">Dashboard</a>
+                    <a href="{{ route('userprofiles.show', ['user' => auth()->user()->id])}}" class="text-sm text-red-700 dark:text-gray-500 underline">Dashboard</a>
                 @else
                     <a href="{{ route('login') }}" class="text-sm text-red-700 text-right dark:text-gray-500 underline">Log in</a>
 
@@ -33,9 +33,9 @@
     @endif 
     </h1>
 </div>
-
+        
 <body class="antialiased bg-blue-300">
-    @livewireScripts    
+    @livewireScripts   
     @if ($errors->any())
             <div>
                 Errors:
