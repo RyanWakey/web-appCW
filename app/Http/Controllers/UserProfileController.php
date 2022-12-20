@@ -43,7 +43,7 @@ class UserProfileController extends Controller
         $profile->user_id = auth()->user()->id;
         $profile->save();
 
-        return view('userprofiles.show', ['profile' => $profile , 'user' => $profile->user]);
+        return view('userprofiles.show', ['profile' => $profile]);
     }
 
     /**
@@ -52,20 +52,20 @@ class UserProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(Profile $profile)
     {
-        return view('userprofiles.show', ['user' => $user]);
+        return view('userprofiles.show', ['profile' => $profile]);
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the specified resource.    
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Profile $profile)
     {
-        //
+        return view('userprofiles.edit',['profile' => $profile]);
     }
 
     /**
@@ -75,9 +75,25 @@ class UserProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Profile $profile)
     {
-        //
+        $validatedData = $request->validate([
+            'display_name' => 'required|max:60',
+            'first_name' => 'nullable|max:100',
+            'last_name' => 'nullable|max:100', 
+            'date_of_birth' => 'nullable|date', 
+            'bio' => 'nullable|max:1000',  
+        ]);
+
+        $profile->display_name = $request->display_name;
+        $profile->first_name = $request->first_name;
+        $profile->last_name = $request->last_name;
+        $profile->date_of_birth = $request->date_of_birth;
+        $profile->bio = $request->bio;
+        $profile->user_id = auth()->user()->id;
+        $profile->save();
+        
+        return redirect()->route('userprofiles.show', ['profile' => $profile])->with('message', 'Profile was Updated');
     }
 
 }
