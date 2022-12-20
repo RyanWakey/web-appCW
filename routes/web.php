@@ -37,8 +37,12 @@ Route::get('/posts/{post}/{comment}/edit', [CommentController::class, 'edit'])->
 Route::patch('/posts/{post}/{comment}', [CommentController::class, 'update'])->name('comments.update')->middleware(['auth']);
 Route::delete('/posts/{post}/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy')->middleware(['auth']);
 
+
+
 Route::get('/userview/{user}',[UserController::class, 'show'])->name('users.show');
 
+Route::get('/userprofile/create', [UserProfileController::class, 'create'])->name('userprofiles.create');
+Route::post('userprofile', [UserProfileController::class, 'store'])->name('userprofiles.store'); 
 Route::get('/userprofile/{user}', [UserProfileController::class, 'show'])->name('userprofiles.show');
 
 Route::get('/dashboard', function () {

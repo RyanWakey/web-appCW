@@ -20,7 +20,13 @@
         @if (Route::has('login'))
             <div class="hidden absolute top-0 right-0 px-6 py-2 sm:block">
                 @auth
-                    <a href="{{ route('userprofiles.show', ['user' => auth()->user()->id])}}" class="text-sm text-red-700 dark:text-gray-500 underline">Dashboard</a>
+                    @if(auth()->user()->profile != null)
+                        <a href="{{ route('userprofiles.show', ['user' => auth()->user()->id])}}" 
+                            class="text-sm font-black text-red-700 dark:text-gray-500 underline">View Profile</a>
+                    @else
+                        <a href="{{route('userprofiles.create', ['user' => auth()->user()->id])}}"
+                            class="text-sm font-black text-red-700 dark:text-gray-500 underline">View Profile</a>
+                    @endif
                 @else
                     <a href="{{ route('login') }}" class="text-sm text-red-700 text-right dark:text-gray-500 underline">Log in</a>
 
