@@ -33,11 +33,11 @@
                 style="height:50px;font-size:12pt;width:600px;"></p><br>
 
             <button class="h-10 px-6 mb-4 font-semibold rounded-md border border-black text-slate-900 bg-white" 
-                type="submit">Submit
+                type="submit" value="Submit">Submit
             </button>
 
             <button class="h-10 px-6 mb-4 font-semibold rounded-md border border-black text-slate-900 bg-white"> 
-                <a href="{{ route('userprofiles.show',['profile' => $profile])}}">Cancel</a>
+                <a href="{{ route('userprofiles.show',['profile' => $profile])}}"> Cancel </a>
             </button>
     </form>
 </div>

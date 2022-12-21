@@ -31,7 +31,7 @@
         </span>
         <button class="h-10 px-6 font-semibold rounded-md border border-black text-slate-900 bg-white" 
             type="button">    
-            <a href="{{url()->previous()}}">Return</a>    
+            <a href="{{route('posts.index')}}">Return</a>    
         </button>
         <button class="h-10 px-6 font-semibold rounded-md border border-black text-slate-900 bg-white" 
             type="button">    
