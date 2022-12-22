@@ -85,7 +85,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('posts.edit', ['post' => $post]);
+        $tags = Tag::get();
+        return view('posts.edit', ['post' => $post,'tags' => $tags]);
     }
 
     /**
@@ -100,11 +101,18 @@ class PostController extends Controller
         $validatedData = $request->validate([
             'title' => 'required|max:150',
             'description' => 'required|max:500',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
+
+        $imageName = time().'.'.$request->image->extension();
+        $request->image->move(public_path('images'), $imageName);
 
         $post->title = $request->title;
         $post->description = $request->description;
+        $post->image = $imageName;
         $post->save();
+
+        $post->tags()->sync($request->tags);
         
         return redirect()->route('posts.show', ['post' => $post])->with('message', 'Post was Updated');
     }
@@ -121,3 +129,4 @@ class PostController extends Controller
         return redirect()->route('posts.index')->with('message','Post was deleted');
     }
 }
+
