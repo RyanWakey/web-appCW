@@ -18,11 +18,13 @@
                 {{$post->user->name}}</a><br><br>
             </span>
             <span class="">
-                Image:
-                <span class="hero container max-w-screen-lg mx-auto pb-1o">
-                    <img src="{{ asset('images/'.$post->image)}}" style="height:300px; width:400px;" class="mx-auto">
+                @if($post->image != null)
+                    Image:
+                    <span class="hero container max-w-screen-lg mx-auto pb-1o">
+                        <img src="{{ asset('images/'.$post->image)}}" style="height:300px; width:400px;" class="mx-auto">
+                    </span>
                 </span>
-            </span>
+                @endif
             Title:  {{$post->title}}<br><br><br>
             Description: {{$post->description}}<br><br><br>
         </ul>

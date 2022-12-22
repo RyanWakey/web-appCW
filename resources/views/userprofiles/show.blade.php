@@ -37,6 +37,10 @@
             type="button">    
             <a href="{{route('userprofiles.edit', ['profile' => $profile])}}">Edit Profile</a>    
         </button>
+        <button class="h-10 px-6 font-semibold rounded-md border border-black text-slate-900 bg-white"
+            type="button">
+            <a href="{{route('profile.edit',['user' => auth()->user()])}}">Change Account Details</a>    
+        </button>
     </div>
 
 

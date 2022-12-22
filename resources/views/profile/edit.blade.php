@@ -24,6 +24,10 @@
                     @include('profile.partials.delete-user-form')
                 </div>
             </div>
+            <button class="h-10 px-6 font-semibold rounded-md border border-black text-slate-900 bg-white" type="button">
+                <a href="{{ route('posts.index')}}">Return to Blog</a>
+            </button> 
         </div>
     </div>
+    
 </x-app-layout>
