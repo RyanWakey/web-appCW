@@ -13,8 +13,12 @@
 
     <div class="px-6">
         
-        <form method="POST" action="{{route('posts.store')}}">
+        <form method="POST" action="{{route('posts.store')}}" enctype="multipart/form-data">
             @csrf
+            <div class="flex-auto space-x-4 mb-6 text-lg font-medium">
+                <p> Image: <input type="file" class="form-control" name="image" value="{{old('image')}}"></p>
+            </div>
+
             <div class="flex-auto space-x-4 mb-6 text-lg font-medium">
                 <p>Title:    <input type="text" name="title" value="{{ old('title')}}" 
                     style="height:100px;font-size:12pt;width:1100px;"></p>

@@ -45,10 +45,16 @@ class PostController extends Controller
         $validatedData = $request->validate([
             'title' => 'required|max:150',
             'description' => 'required|max:500',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
+
+        $imageName = time().'.'.$request->image->extension();
+        $request->image->move(public_path('images'), $imageName);
+
         $post = new Post;
         $post->title = $request->title;
         $post->description = $request->description;
+        $post->image = $imageName;
         $post->user_id = auth()->user()->id; 
         $post->save();
         
