@@ -15,10 +15,16 @@
             Post created by User: 
             <span class="text-purple-900 font-extrabold italic underline">
                 <a href="{{route('users.show',['user' => $post->user, 'post' => $post])}}">       
-                {{$post->user->name}}</a><br>
+                {{$post->user->name}}</a><br><br>
             </span>
-            Title:  {{$post->title}}<br>
-            Description: {{$post->description}}<br>
+            <span class="">
+                Image:
+                <span class="hero container max-w-screen-lg mx-auto pb-1o">
+                    <img src="{{ asset('images/'.$post->image)}}" style="height:300px; width:400px;" class="mx-auto">
+                </span>
+            </span>
+            Title:  {{$post->title}}<br><br><br>
+            Description: {{$post->description}}<br><br><br>
         </ul>
     </div>
 
