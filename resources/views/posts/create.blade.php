@@ -24,8 +24,16 @@
                 <p>Description: <input type="text" name="description" value="{{ old('description')}}"
                     style="height:450px;font-size:12pt;width:1100px;"></p>
             </div>
-
-            <div class="flex space-x-4 mb-6 text-sm font-medium">
+            
+            <div class="flex-auto space-x-2 mb-6 text-lg font-medium">
+                <p>Select relevant tags: <select id="tags" name="tags[]" class="bg-gray-100 border border-gray-900 text-gray-900
+                    text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-500" multiple>
+                    @foreach($tags as $tag)
+                        <option value="{{$tag->id}}">{{$tag->name}}</option>
+                    @endforeach
+                </select>
+            
+            <div class="flex space-x-4 py-2 mb-6 text-sm font-medium">
                 <div class="flex-auto flex space-x-20">
 
                     <button class="h-10 px-6 mb-4 font-semibold rounded-md bg-black text-white absolute right-8" 
@@ -36,6 +44,8 @@
                     type="button">    
                         <a href="{{route('posts.index')}}">Cancel</a>    
                     </button>
+
+                    
 
                 </div>
             </div>

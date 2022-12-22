@@ -13,13 +13,20 @@
         <ul>
             @foreach($posts as $post)
                 <div class="bg-orange-600 text-green-500 font-semibold">
-                    Posted by User: <a href="{{route('users.show',['user' => $post->user, 'post' => $post])}}">
+                    Posted by User: 
+                    <a href="{{route('users.show',['user' => $post->user, 'post' => $post])}}">
                         <u><i>{{$post->user->name}}</i></u><br>
                     <div class="px-6 py-1">
                         Post Title:
-                        <u><a href='{{ route('posts.show', ['post' => $post->id,'postcomments' 
-                        => $post->comments]) }}'>{{ $post->title }}</u></a><br>  
+                        <u><a href='{{ route('posts.show', ['post' => $post->id,'postcomments' => $post->comments])}}'
+                            >{{ $post->title }}</u></a><br>  
                     </div>
+                    Tags:
+                    <span class="text-teal-300 font-black">
+                        @foreach($post->tags as $tag)
+                            #{{$tag->name}}
+                        @endforeach
+                    </span>
                 </div>   
                 <br>
             @endforeach

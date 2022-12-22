@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+use App\Models\Tag;
 use App\Models\Post;
 use App\Http\Controllers\Controller;
 
@@ -28,8 +29,9 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('posts.create');
+    {   
+        $tags = Tag::get();
+        return view('posts.create', ['tags' => $tags]);
     }
 
     /**
@@ -44,14 +46,17 @@ class PostController extends Controller
             'title' => 'required|max:150',
             'description' => 'required|max:500',
         ]);
-         
         $post = new Post;
         $post->title = $request->title;
         $post->description = $request->description;
         $post->user_id = auth()->user()->id; 
         $post->save();
+        
+        $commentPaginate = $post->comments->paginate(10);
+        $post->tags()->sync($request->tags);
 
-        return view('posts.show', ['post' => $post])->with('message', 'Post was Created');
+        return view('posts.show', ['post' => $post, 'commentPaginate' => $commentPaginate])
+            ->with('message', 'Post was Created');
     }
 
     /**
