@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('like_id');
             $table->integer('likeable_id');
-            $table->string('taggable_type')
+            $table->string('likeable_type')
             $table->timestamps();
         });
     }

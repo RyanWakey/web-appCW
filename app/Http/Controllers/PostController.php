@@ -45,7 +45,7 @@ class PostController extends Controller
         $validatedData = $request->validate([
             'title' => 'required|max:150',
             'description' => 'required|max:500',
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
         $imageName = time().'.'.$request->image->extension();
@@ -101,7 +101,7 @@ class PostController extends Controller
         $validatedData = $request->validate([
             'title' => 'required|max:150',
             'description' => 'required|max:500',
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
         $imageName = time().'.'.$request->image->extension();
