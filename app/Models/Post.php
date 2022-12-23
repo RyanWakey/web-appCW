@@ -23,5 +23,7 @@ class Post extends Model
         return $this->belongsToMany(Tag::Class);
     }
 
-
+    public function likes(){
+        return $this->morphToMany(Like::class. 'likeable');
+    }
 }
