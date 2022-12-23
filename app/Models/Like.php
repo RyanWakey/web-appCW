@@ -16,4 +16,8 @@ class Like extends Model
     public function comments(){
         return $this->morphedByMany(Comment::class, 'likeable');
     }
+
+    public function user(){
+        return $this->belongsTo(User::class)
+    }
 }
