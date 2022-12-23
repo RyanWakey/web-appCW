@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('likes', function (Blueprint $table) {
             $table->id();
-            $table->boolean('isLike')->default(false);
             $table->bigInteger('user_id')->unsigned();
             $table->timestamps();   
 
