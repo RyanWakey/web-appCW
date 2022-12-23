@@ -16,7 +16,12 @@ return new class extends Migration
         Schema::create('likes', function (Blueprint $table) {
             $table->id();
             $table->boolean('isLike')->default(false);
-            $table->timestamps();
+            $table->bigInteger('user_id')->unsigned();
+            $table->timestamps();   
+
+            $table->foreign('user_id')->references('id')->on('users')
+                ->onDelete('cascade')->onUpdate('cascade');
+
         });
     }
 
