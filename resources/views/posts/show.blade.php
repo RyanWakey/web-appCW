@@ -88,6 +88,15 @@
                          <a href="{{route('comments.show', ['post' => $post, 'comment' => $comment])}}"> 
                             {{$comment->description}}<br></a>
                     </span>
+                    @if(!Auth::user())
+                    @else 
+                        <form method="POST" action="{{route('likes.likeComment',['comment' => $comment, 'post' => $post])}}">
+                            @csrf                
+                            <button class="h-10 px-6 font-black rounded-md border border-black text-slate-900 bg-white" 
+                            type="submit">Like Comment
+                            </button>
+                        </form>
+                    @endif
                 </div> 
                 <br>
             @endforeach

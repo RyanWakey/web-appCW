@@ -41,7 +41,8 @@ Route::delete('/posts/{post}/{comment}', [CommentController::class, 'destroy'])-
 
 Route::get('/userview/{user}',[UserController::class, 'show'])->name('users.show');
 
-Route::post('/posts/{post}/like',[LikeController::class, 'likePost'])->name('likes.likePost');
+Route::post('/posts/{post}/Postlike',[LikeController::class, 'likePost'])->name('likes.likePost');
+Route::post('/posts/{post}/CommentLike',[LikeController::class, 'likeComment'])->name('likes.likeComment');
 
 Route::get('/userprofile/create', [UserProfileController::class, 'create'])->name('userprofiles.create');
 Route::post('userprofile', [UserProfileController::class, 'store'])->name('userprofiles.store'); 

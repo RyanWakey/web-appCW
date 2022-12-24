@@ -39,13 +39,14 @@ class LikeController extends Controller
      */
     public function likePost(Request $request,Post $post)
     {
+
         $like = new Like;
         $like->user_id = auth()->user()->id;
         $like->save();
 
         $post->likes()->sync($like->id);
 
-        return redirect()->route('posts.show',['post' => $post->id]);
+        return redirect()->route('posts.show',['post' => $post->id])->with('message','Post was liked');
     }
 
     public function likeComment(Request $request, Comment $comment)
@@ -54,8 +55,9 @@ class LikeController extends Controller
         $like->user_id = auth()->user()->id;
         $like->save();
         
-        $comment->likes()->sync($like->id);
+        $comment->likes()->sync($like->id,$comment->id,Comment::class);
 
+        return redirect()->route('posts.show',['post' => $post->id])->with('message','Comment was liked');
     }
 
     /**
