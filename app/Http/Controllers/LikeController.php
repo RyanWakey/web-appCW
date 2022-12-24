@@ -56,7 +56,7 @@ class LikeController extends Controller
         $like->save();
         
         $post = $comment->post->id;
-        $comment->likes()->sync($like->id,$comment->id,Comment::class);
+        $comment->likes()->sync($like->id);
 
         return redirect()->route('posts.show',['post' => $post])->with('message','Comment was liked');
     }
