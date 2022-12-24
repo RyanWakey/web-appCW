@@ -49,15 +49,16 @@ class LikeController extends Controller
         return redirect()->route('posts.show',['post' => $post->id])->with('message','Post was liked');
     }
 
-    public function likeComment(Request $request, Comment $comment)
+    public function likeComment(Request $request, Post $post, Comment $comment)
     {
         $like = new Like;
         $like->user_id = auth()->user()->id;
         $like->save();
         
+        $post = $comment->post->id;
         $comment->likes()->sync($like->id,$comment->id,Comment::class);
 
-        return redirect()->route('posts.show',['post' => $post->id])->with('message','Comment was liked');
+        return redirect()->route('posts.show',['post' => $post])->with('message','Comment was liked');
     }
 
     /**
