@@ -16,13 +16,6 @@ class LikeTableSeeder extends Seeder
      */
     public function run()
     {
-        $l1 = new Like;
-        $l1->user_id = 1;
-        $l1->save();
-
-        $l2 = new Like;
-        $l2->user_id = 2;
-        $l2->save();
-
+        // 
     }
 }

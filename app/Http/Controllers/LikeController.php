@@ -46,14 +46,13 @@ class LikeController extends Controller
         //checks if there is an existing like on the current post from the current user
         foreach($post->likes as $alllikesonthispost){
             foreach($likes as $like){
-                if($user->id == $like->user->id && $alllikesonthispost->pivot->like_id != $like->user->id){
+                if($user->id == $like->user->id && $alllikesonthispost->pivot->like_id == $like->id){
                     $isExisting = True;
                 }
             }  
         }
-
         if ($isExisting == true){
-            
+            return redirect()->route('posts.show',['post' => $post->id])->with('message','Post has already been liked');
         } else {
         
         $like = new Like;

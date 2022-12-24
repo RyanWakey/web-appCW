@@ -59,12 +59,14 @@
 
             @if(!Auth::user())
             @else 
-                <form method="POST" action="{{route('likes.likePost',['post' => $post])}}">
-                    @csrf                
-                    <button class="h-10 px-6 mb-2 font-black rounded-md border border-black text-slate-900 bg-green-600" 
-                    type="submit">Like Post
-                    </button>
-                </form>
+                <span class="flex-auto px-2">   
+                    <form method="POST" action="{{route('likes.likePost',['post' => $post])}}">
+                        @csrf                
+                        <button class="h-10 px-6 mb-2 font-black rounded-md border border-black text-slate-900 bg-green-600" 
+                        type="submit">Like Post
+                        </button>
+                    </form>
+                </span>
             @endif
         </div>
     </div>
