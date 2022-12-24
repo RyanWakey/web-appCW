@@ -27,6 +27,15 @@
                 @endif
             Title:  {{$post->title}}<br><br><br>
             Description: {{$post->description}}<br><br><br>
+            @if(!Auth::user())
+            @else 
+                <form method="POST" action="{{route('likes.likePost',['post' => $post])}}">
+                    @csrf                
+                    <button class="h-10 px-6 font-black rounded-md border border-black text-slate-900 bg-white" 
+                    type="submit">Like Post
+                    </button>
+                </form>
+            @endif
         </ul>
     </div>
 

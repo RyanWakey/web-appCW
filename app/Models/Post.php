@@ -24,6 +24,6 @@ class Post extends Model
     }
 
     public function likes(){
-        return $this->morphToMany(Like::class. 'likeable');
+        return $this->morphToMany(Like::class, 'likeable');
     }
 }

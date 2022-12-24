@@ -103,7 +103,7 @@ class PostController extends Controller
             'description' => 'required|max:500',
             'image' => 'image|mimes:jpeg,png,jpg|max:2048',
         ]);
-
+    
         $imageName = time().'.'.$request->image->extension();
         $request->image->move(public_path('images'), $imageName);
 
@@ -124,7 +124,7 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(Post $post)
-    {
+    {   
         $post->delete();
         return redirect()->route('posts.index')->with('message','Post was deleted');
     }

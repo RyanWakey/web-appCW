@@ -20,7 +20,7 @@ class Comment extends Model
     }   
 
     public function likes(){
-        return $this->morphedByMany(Like::class, 'likeable');
+        return $this->morphedToMany(Like::class, 'likeable');
     }
 }
 
