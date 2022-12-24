@@ -38,8 +38,24 @@ class LikeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function likePost(Request $request,Post $post)
-    {
+    {   
+        $likes = Like::get();
+        $isExisting = false;
+        $user = auth()->user();
+       
+        //checks if there is an existing like on the current post from the current user
+        foreach($post->likes as $alllikesonthispost){
+            foreach($likes as $like){
+                if($user->id == $like->user->id && $alllikesonthispost->pivot->like_id != $like->user->id){
+                    $isExisting = True;
+                }
+            }  
+        }
 
+        if ($isExisting == true){
+            
+        } else {
+        
         $like = new Like;
         $like->user_id = auth()->user()->id;
         $like->save();
@@ -47,6 +63,8 @@ class LikeController extends Controller
         $post->likes()->sync($like->id);
 
         return redirect()->route('posts.show',['post' => $post->id])->with('message','Post was liked');
+        }
+        
     }
 
     public function likeComment(Request $request, Post $post, Comment $comment)
