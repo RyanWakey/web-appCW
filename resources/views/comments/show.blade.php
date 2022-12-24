@@ -11,7 +11,12 @@
 <div class="px-2">
     <div class="px-2 py-2 text-lg bg-orange-600">
         <ul>
-            Comment created by User: {{$comment->user->name}}<br>
+            Comment created by User: 
+            @if($comment->user->profile == null)  
+                {{$comment->user->name}}<br>
+            @else
+                {{$comment->user->profile->display_name}}<br>
+            @endif
             Description: {{$comment->description}}<br>
         </ul>
     </div>

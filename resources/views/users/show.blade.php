@@ -5,7 +5,12 @@
 @section('content')
 
 <div class="font-mono text-1xl py-6 px-4">
-    <p>The Posts and Comments from User <b>{{$user->name}}:</b></p>
+    <p>The Posts and Comments from User <b>
+        @if($user->profile == null)
+            {{$user->name}}:</b></p>
+        @else
+            {{$user->profile->display_name}}
+        @endif
 </div>
 
 <div class="px-6">

@@ -15,7 +15,7 @@
                 <div class="bg-orange-600 text-green-500 font-semibold">
                     Posted by User: 
                     <a href="{{route('users.show',['user' => $post->user, 'post' => $post])}}">
-                        @if($post->user->profile->display_name == null)
+                        @if($post->user->profile == null)
                             <u><i>{{$post->user->name}}</i></u><br></a>
                         @else
                             <u><i>{{$post->user->profile->display_name}}</i></u><br></a>

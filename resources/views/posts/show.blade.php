@@ -15,10 +15,10 @@
             Post created by User: 
             <span class="text-purple-900 font-extrabold italic underline">
                 <a href="{{route('users.show',['user' => $post->user, 'post' => $post])}}">       
-                @if($post->user->profile->display_name == null)
+                @if($post->user->profile == null)
                     {{$post->user->name}}</a><br><br>
                 @else
-                    {{$post->user->profile->display_name}}
+                    {{$post->user->profile->display_name}}</a><br><br>
                 @endif
             </span>
             <span class="">
@@ -31,19 +31,10 @@
                 @endif
             Title:  {{$post->title}}<br><br><br>
             Description: {{$post->description}}<br><br><br>
-            @if(!Auth::user())
-            @else 
-                <form method="POST" action="{{route('likes.likePost',['post' => $post])}}">
-                    @csrf                
-                    <button class="h-10 px-6 font-black rounded-md border border-black text-slate-900 bg-white" 
-                    type="submit">Like Post
-                    </button>
-                </form>
-            @endif
         </ul>
     </div>
 
-    <div class="flex space-x-4 mb-6 text-sm font-medium">
+    <div class="mb-6 text-sm font-medium">
         <div class="flex-auto flex space-x-20 bg-orange-600">
             @if(!Auth::user())
                 @else 
@@ -61,9 +52,19 @@
                     @csrf
                     @method('DELETE')
                     <button class="h-10 px-6 font-black rounded-md border border-black text-slate-900 bg-white" 
-                    type="submit">Delete Post</button>
+                        type="submit">Delete Post</button>
                     </form>
                 @endif
+            @endif
+
+            @if(!Auth::user())
+            @else 
+                <form method="POST" action="{{route('likes.likePost',['post' => $post])}}">
+                    @csrf                
+                    <button class="h-10 px-6 mb-2 font-black rounded-md border border-black text-slate-900 bg-green-600" 
+                    type="submit">Like Post
+                    </button>
+                </form>
             @endif
         </div>
     </div>
@@ -85,7 +86,11 @@
                     User: 
                     <span class="text-purple-900 font-extrabold italic underline">
                         <a href="{{route('users.show',['user' => $post->user, 'post' => $post])}}"> 
-                        {{$comment->user->name}}<br></a>
+                        @if($comment->user->profile == null)  
+                            {{$comment->user->name}}<br></a>
+                        @else
+                            {{$comment->user->profile->display_name}}<br></a>
+                        @endif        
                     </span>
                     Comment:
                     <span class="text-purple-900 font-extrabold underline">
@@ -96,7 +101,7 @@
                     @else 
                         <form method="POST" action="{{route('likes.likeComment',['comment' => $comment, 'post' => $post])}}">
                             @csrf                
-                            <button class="h-10 px-6 font-black rounded-md border border-black text-slate-900 bg-white" 
+                            <button class="h-10 px-6 mb-2 font-black rounded-md border border-black text-slate-900 bg-green-600" 
                             type="submit">Like Comment
                             </button>
                         </form>
