@@ -15,7 +15,11 @@
                 <div class="bg-orange-600 text-green-500 font-semibold">
                     Posted by User: 
                     <a href="{{route('users.show',['user' => $post->user, 'post' => $post])}}">
-                        <u><i>{{$post->user->name}}</i></u><br>
+                        @if($post->user->profile->display_name == null)
+                            <u><i>{{$post->user->name}}</i></u><br></a>
+                        @else
+                            <u><i>{{$post->user->profile->display_name}}</i></u><br></a>
+                        @endif
                     <div class="px-6 py-1">
                         Post Title:
                         <u><a href='{{ route('posts.show', ['post' => $post->id,'postcomments' => $post->comments])}}'

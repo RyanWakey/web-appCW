@@ -15,7 +15,11 @@
             Post created by User: 
             <span class="text-purple-900 font-extrabold italic underline">
                 <a href="{{route('users.show',['user' => $post->user, 'post' => $post])}}">       
-                {{$post->user->name}}</a><br><br>
+                @if($post->user->profile->display_name == null)
+                    {{$post->user->name}}</a><br><br>
+                @else
+                    {{$post->user->profile->display_name}}
+                @endif
             </span>
             <span class="">
                 @if($post->image != null)
