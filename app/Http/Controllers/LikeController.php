@@ -68,14 +68,32 @@ class LikeController extends Controller
 
     public function likeComment(Request $request, Post $post, Comment $comment)
     {
+        $likes = Like::get();
+        $isExisting = false;
+        $user = auth()->user();
+        
+        foreach($comment->likes as $alllikesonthispost){
+            foreach($likes as $like){
+                if($user->id == $like->user->id && $alllikesonthispost->pivot->like_id == $like->id){
+                    $isExisting = True;
+                }
+            }  
+        }
+
+        $post = $comment->post;
+        
+        if ($isExisting == true){
+            return redirect()->route('posts.show',['post' => $post->id])->with('message','Comment has already been liked');
+        } else {
+
         $like = new Like;
         $like->user_id = auth()->user()->id;
         $like->save();
         
-        $post = $comment->post->id;
         $comment->likes()->sync($like->id);
 
-        return redirect()->route('posts.show',['post' => $post])->with('message','Comment was liked');
+        return redirect()->route('posts.show',['post' => $post->id])->with('message','Comment was liked');
+        }
     }
 
     /**

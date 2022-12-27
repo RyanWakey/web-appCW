@@ -61,7 +61,7 @@ class PostController extends Controller
         $commentPaginate = $post->comments->paginate(10);
         $post->tags()->sync($request->tags);
 
-        return view('posts.show', ['post' => $post, 'commentPaginate' => $commentPaginate])
+        return redirect()->route('posts.show', ['post' => $post, 'commentPaginate' => $commentPaginate])
             ->with('message', 'Post was Created');
     }
 
