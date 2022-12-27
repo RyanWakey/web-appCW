@@ -49,6 +49,8 @@ class CommentController extends Controller
         $comment->post_id = $request->input('post_id');
         $comment->save();
 
+        $notification = new CommentPostNotification();
+
         return redirect()->route('posts.show' ,['post' => $post])->with('message', 'Comment was Stored');
 
     }
