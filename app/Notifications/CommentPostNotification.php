@@ -11,16 +11,21 @@ class CommentPostNotification extends Notification
 {
     use Queueable;
 
-    private $commentData
+    private $user;
+    private $post;
+    private $comment;
+    
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($commentData)
+    public function __construct(User $user, Post $post, Comment $comment)
     {
-        $this->commentData -> $commentData;
+        $this->user = $user;
+        $this->post = $post;
+        $this->comment = $comment;
 
     }
 
@@ -43,10 +48,12 @@ class CommentPostNotification extends Notification
      */
     public function toMail($notifiable)
     {
+        $url = route('posts.show',[$this->post]),
+
         return (new MailMessage)
-                    ->greeting('Hello ', $this->$commentData['name']'.')
-                    ->line('Your post', $this->$comentData['title'], 'has recieved a new comment, view it now!')
-                    ->action('View comment', $this->$commentData['URL']);
+                    ->greeting('Hello ', $this->user'.')
+                    ->line('Your post has recieved a new comment, view it now!')
+                    ->action('View comment', $url);
     }
 
     /**

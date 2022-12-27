@@ -8,10 +8,6 @@ class NotificationController extends Controller
 {
     public function sendNotification()
     {
-        $commentData = [
-            'name' => $this->user->name,
-            'title' => $this->post->title,
-            'URL' => route('posts.show',['post' => $this->post->id]);
-        ]
+       Notification::send(auth()->user(), CommentPostNotifcation($user,$post,$comment));
     }
 }
