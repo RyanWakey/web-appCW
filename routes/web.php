@@ -6,6 +6,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Livewire\PostComment;
 use Illuminate\Support\Facades\Route;
 
@@ -50,6 +51,7 @@ Route::get('/userprofile/{profile}', [UserProfileController::class, 'show'])->na
 Route::get('/userprofile/{profile}/edit', [UserProfileController::class, 'edit'])->name('userprofiles.edit');
 Route::patch('/userprofile/{profile}', [UserProfileController::class, 'update'])->name('userprofiles.update');
 
+Route::get('/send-notification',[NotificationController::class, 'sendNotification']);->name('notifications.sendNotification');
 
 
 Route::get('/dashboard', function () {
