@@ -30,7 +30,7 @@ class PostComment extends Component
         $comment->post_id = $this->post->id;
         $comment->save();
 
-        $comment->user->notify(new CommentPostNotification($comment->user, $comment->post));
+        $comment->post->user->notify(new CommentPostNotification($comment->user, $comment->post));
     }
 
     public function render()
