@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+use App\Notifications\CommentPostNotification;
 use App\Models\Post;
 use App\Models\Comment;
 use App\Http\Controllers\Controller;
@@ -48,8 +49,8 @@ class CommentController extends Controller
         $comment->user_id = auth()->user()->id; 
         $comment->post_id = $request->input('post_id');
         $comment->save();
-
-        $notification = new CommentPostNotification();
+       
+        $post->user->notify(new CommentPostNotification($comment->user, $comment->post));
 
         return redirect()->route('posts.show' ,['post' => $post])->with('message', 'Comment was Stored');
 

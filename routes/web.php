@@ -51,9 +51,6 @@ Route::get('/userprofile/{profile}', [UserProfileController::class, 'show'])->na
 Route::get('/userprofile/{profile}/edit', [UserProfileController::class, 'edit'])->name('userprofiles.edit');
 Route::patch('/userprofile/{profile}', [UserProfileController::class, 'update'])->name('userprofiles.update');
 
-Route::get('/send-notification',[NotificationController::class, 'sendNotification']);->name('notifications.sendNotification');
-
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

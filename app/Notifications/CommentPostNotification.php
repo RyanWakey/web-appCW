@@ -2,6 +2,11 @@
 
 namespace App\Notifications;
 
+
+use App\Models\User;
+use App\Models\Post;
+use App\Models\Comment;
+
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -13,20 +18,16 @@ class CommentPostNotification extends Notification
 
     private $user;
     private $post;
-    private $comment;
-    
-
+      
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct(User $user, Post $post, Comment $comment)
+    public function __construct(User $user, Post $post)
     {
         $this->user = $user;
         $this->post = $post;
-        $this->comment = $comment;
-
     }
 
     /**
@@ -48,12 +49,11 @@ class CommentPostNotification extends Notification
      */
     public function toMail($notifiable)
     {
-        $url = route('posts.show',[$this->post]),
-
         return (new MailMessage)
-                    ->greeting('Hello ', $this->user'.')
-                    ->line('Your post has recieved a new comment, view it now!')
-                    ->action('View comment', $url);
+                    ->greeting('Hello, '.$this->post->user->name)
+                    ->line('Your post has recieved a new comment from user '. auth()->user()->name. 
+                    ' view it now!')
+                    ->action('View comment', route('posts.show',[$this->post->id]));
     }
 
     /**
