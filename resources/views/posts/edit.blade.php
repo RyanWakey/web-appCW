@@ -8,7 +8,7 @@
     <p> Edit Post:</p>
 </div>  
 
-<div class="px-6 py-2 bg-red-600">
+<div class="container mx-auto px-8 py-12 md:px-8 bg-red-600 text-green-500 font-medium text-lg">
         @if(!Auth::user())
         @else 
         @if(auth()->user()->id == $post->user->id || auth()->user()->admin == true)  

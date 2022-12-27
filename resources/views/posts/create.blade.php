@@ -4,15 +4,12 @@
     
 @section('content')
 
-<div class="px-4 py-4">
-    <div class="bg-red-500">
-    
     <div class="font-mono text-2xl py-6 px-4">
         <p> Enter the details below to create a Post: </p>
     </div>  
 
-    <div class="px-6">
-        
+    <div class="container mx-auto px-8 py-12 md:px-8 bg-red-600 text-green-500 font-medium text-lg">
+        <div class="px-6">
         <form method="POST" action="{{route('posts.store')}}" enctype="multipart/form-data">
             @csrf
             <div class="flex-auto space-x-4 mb-6 text-lg font-medium">
@@ -36,11 +33,12 @@
                         <option value="{{$tag->id}}">{{$tag->name}}</option>
                     @endforeach
                 </select>
-            
+            </div>
+
             <div class="flex space-x-4 py-2 mb-6 text-sm font-medium">
                 <div class="flex-auto flex space-x-20">
 
-                    <button class="h-10 px-6 mb-4 font-semibold rounded-md bg-black text-white absolute right-8" 
+                    <button class="shadow-md shadow-green-500 h-10 px-6 mb-4 font-semibold rounded-md bg-black text-white" 
                     type="submit" value="Submit">Submit
                     </button>
 
@@ -48,16 +46,10 @@
                     type="button">    
                         <a href="{{route('posts.index')}}">Cancel</a>    
                     </button>
-
-                    
-
                 </div>
             </div>
-
         </form>  
         
-    </div>
-
     </div>
 </div>
 
