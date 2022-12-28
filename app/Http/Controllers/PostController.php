@@ -48,15 +48,25 @@ class PostController extends Controller
             'image' => 'image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
-        $imageName = time().'.'.$request->image->extension();
-        $request->image->move(public_path('images'), $imageName);
+        $imageName;
 
-        $post = new Post;
-        $post->title = $request->title;
-        $post->description = $request->description;
-        $post->image = $imageName;
-        $post->user_id = auth()->user()->id; 
-        $post->save();
+        if(request()->image != null){
+            $imageName = time().'.'.$request->image->extension();
+            $request->image->move(public_path('images'), $imageName);
+            $post = new Post;
+            $post->title = $request->title;
+            $post->description = $request->description;
+            $post->image = $imageName;
+            $post->user_id = auth()->user()->id; 
+            $post->save();
+        }else {
+            $post = new Post;
+            $post->title = $request->title;
+            $post->description = $request->description;
+            $post->image = null;
+            $post->user_id = auth()->user()->id; 
+            $post->save();  
+        }
         
         $commentPaginate = $post->comments->paginate(10);
         $post->tags()->sync($request->tags);
