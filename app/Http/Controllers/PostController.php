@@ -112,17 +112,28 @@ class PostController extends Controller
             'image' => 'image|mimes:jpeg,png,jpg|max:2048',
         ]);
     
-        $imageName = time().'.'.$request->image->extension();
-        $request->image->move(public_path('images'), $imageName);
-
-        $post->title = $request->title;
-        $post->description = $request->description;
-        $post->image = $imageName;
-        $post->save();
+        if(request()->image != null){
+            $imageName = time().'.'.$request->image->extension();
+            $request->image->move(public_path('images'), $imageName);
+            $post = new Post;
+            $post->title = $request->title;
+            $post->description = $request->description;
+            $post->image = $imageName;
+            $post->user_id = auth()->user()->id; 
+            $post->save();
+        }else {
+            $post = new Post;
+            $post->title = $request->title;
+            $post->description = $request->description;
+            $post->image = null;
+            $post->user_id = auth()->user()->id; 
+            $post->save();  
+        }
 
         $post->tags()->sync($request->tags);
-        
-        return redirect()->route('posts.show', ['post' => $post])->with('message', 'Post was Updated');
+        $commentPaginate = $post->comments->paginate(10);
+
+        return redirect()->route('posts.show', ['post' => $post, 'commentPaginate' => $commentPaginate])->with('message', 'Post was Updated');
     }
 
     /**
