@@ -28,6 +28,16 @@
                         <a href="{{route('comments.show', ['post' => $post, 'comment' => $comment])}}" class="no-underline hover:underline"> 
                             {{$comment->description}}<br><br></a>
                     </span>
+            
+                    @if(!Auth::user())
+                    @else 
+                        <form method="POST" action="{{route('likes.likeComment',['comment' => $comment, 'post' => $post])}}">
+                            @csrf                
+                            <button class="h-10 px-6 mb-2 font-black rounded-md border border-black text-slate-900 bg-green-600" 
+                            type="submit"> Like Comment
+                         </button>
+                        </form>
+                    @endif
                 </div> 
                 <br>
             @endforeach
