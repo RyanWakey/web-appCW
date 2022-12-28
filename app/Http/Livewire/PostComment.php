@@ -33,6 +33,7 @@ class PostComment extends Component
 
         $comment->post->user->notify(new CommentPostNotification($comment->user, $comment->post));
         
+        $this->description = "";
         $this->emit('commentPaginate');
     }
 
