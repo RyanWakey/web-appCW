@@ -4,8 +4,8 @@
 
 @section('content')
 
-<div class="font-mono text-1xl py-6 px-4">
-    <p>The Posts and Comments from User <b>
+<div class="font-mono text-2xl py-6 px-4">
+    <p>The Posts and Comments from User - <b>
         @if($user->profile == null)
             {{$user->name}}:</b></p>
         @else
@@ -15,7 +15,7 @@
 
 <div class="px-6">
     @foreach($collection as $pc)
-    <div class="bg-orange-600 text-green-500 font-semibold">
+    <div class="container mx-auto px-6 py-12 md:px-8 bg-orange-600 text-green-500 font-semibold">
         @if($pc->post_id != null)
             Comment Created at - <b>{{$pc->created_at}}<br></b>
             Comment Description - {{$pc->description}}<br> 

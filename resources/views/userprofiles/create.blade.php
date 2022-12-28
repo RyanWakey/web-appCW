@@ -9,8 +9,7 @@
     <div class="font-mono text-1xl">
         Create Your Profile:
     </div>
-
-    <div class="flex-auto px-6 py-4 font-semibold bg-red-500 text-black-900 shadow ">
+    <div class="container mx-auto px-6 py-12 md:px-8 bg-red-600 text-green-500">
         <form method="POST" action="{{route('userprofiles.store')}}">
             @csrf
             <i> Display Name </i>
@@ -33,10 +32,10 @@
 
             <div class="flex space-x-4 mb-2 text-sm font-medium">
                 <div class="flex-auto flex space-x-20">
-                    <button class="h-10 px-6 font-semibold rounded-md bg-black text-white absolute right-8" 
+                    <button class="shadow-md shadow-green-500 h-10 px-6 font-semibold rounded-md bg-black text-white" 
                         type="submit" value="Submit">Submit
                     </button>
-                    <button class="h-10 px-6 font-semibold rounded-md border border-black text-slate-900 bg-white" 
+                    <button class="shadow-md shadow-green-500 h-10 px-6 font-semibold rounded-md border border-black text-slate-900 bg-white" 
                         type="button">    
                             <a href="{{url()->previous()}}">Cancel</a>    
                     </button>

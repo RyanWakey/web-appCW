@@ -11,18 +11,18 @@
     
     <ul>
         @foreach($posts as $post)
-            <div class="container mx-auto px-6 py-12 md:px-8 bg-orange-600 text-green-500 font-medium text-lg">
+            <div class="container mx-auto px-6 py-12 md:px-8 bg-orange-600 text-green-500 font-medium text-xl">
                 Posted by User: 
-                <a href="{{route('users.show',['user' => $post->user, 'post' => $post])}}">
+                <a href="{{route('users.show',['user' => $post->user, 'post' => $post])}}" class="no-underline hover:underline">
                     @if($post->user->profile == null)
-                        <u><i>{{$post->user->name}}</i></u><br></a>
+                        <i>{{$post->user->name}}</i><br></a>
                     @else
-                        <u><i>{{$post->user->profile->display_name}}</i></u><br></a>
+                        <i>{{$post->user->profile->display_name}}</i></a><br>
                     @endif
                 <div class="px-6 py-1">
                     Post Title:
-                    <u><a href='{{ route('posts.show', ['post' => $post->id,'postcomments' => $post->comments])}}'
-                        >{{ $post->title }}</u></a><br>  
+                    <a href="{{ route('posts.show', ['post' => $post->id,'postcomments' => $post->comments])}}" class="no-underline hover:underline"
+                        >{{ $post->title }}</a><br>  
                 </div>
                 Tags:
                 <span class="text-teal-300 font-black">

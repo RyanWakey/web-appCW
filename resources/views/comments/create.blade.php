@@ -20,10 +20,10 @@
             </div>
             <div class="flex space-x-4 mb-6 text-sm font-medium">
                 <div class="flex-auto flex">
-                    <button class="h-10 px-6 font-semibold rounded-md bg-black text-white relative right-0">
+                    <button class="shadow-md shadow-green-500 h-10 px-6 font-semibold rounded-md bg-black text-white relative right-0">
                         <input type="submit" value="Submit">
                     </button>
-                    <button class="h-10 px-6 font-semibold rounded-md bg-black text-white">
+                    <button class="shadow-md shadow-green-500 h-10 px-6 font-semibold rounded-md bg-black text-white">
                         <a href="{{ route('posts.show',['post' => $post])}}">Cancel</a>
                     </button>
                 </div>

@@ -13,8 +13,8 @@
     <div class="flex-auto px-4 py-2 bg-orange-600 text-green-500">
         <ul>
             Post created by User: 
-            <span class="text-purple-900 font-extrabold italic underline">
-                <a href="{{route('users.show',['user' => $post->user, 'post' => $post])}}">       
+            <span class="text-purple-900 font-extrabold italic">
+                <a href="{{route('users.show',['user' => $post->user, 'post' => $post])}}" class="no-underline hover:underline">       
                 @if($post->user->profile == null)
                     {{$post->user->name}}</a><br><br>
                 @else
@@ -81,8 +81,8 @@
             @foreach($commentPaginate as $comment)
                 <div class="container mx-auto px-6 py-12 md:px-8 bg-orange-600 text-green-500">
                     User: 
-                    <span class="text-purple-900 font-extrabold italic underline">
-                        <a href="{{route('users.show',['user' => $post->user, 'post' => $post])}}"> 
+                    <span class="text-purple-900 font-extrabold italic">
+                        <a href="{{route('users.show',['user' => $post->user, 'post' => $post])}}" class="no-underline hover:underline"> 
                         @if($comment->user->profile == null)  
                             {{$comment->user->name}}<br></a>
                         @else
@@ -90,8 +90,8 @@
                         @endif        
                     </span>
                     Comment:
-                    <span class="text-purple-900 font-extrabold underline">
-                         <a href="{{route('comments.show', ['post' => $post, 'comment' => $comment])}}"> 
+                    <span class="text-purple-900 font-extrabold">
+                         <a href="{{route('comments.show', ['post' => $post, 'comment' => $comment])}}" class="no-underline hover:underline"> 
                             {{$comment->description}}<br><br></a>
                     </span>
                     @if(!Auth::user())

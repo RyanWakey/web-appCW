@@ -4,11 +4,12 @@
 
 @section('content')
 
-<div class="px-6 py-4">
+<div class="px-6 py-4 text-2xl">
     <div class="font-mono text-1xl">
         User Profile:
     </div>
-    <div class="flex-auto px-6 py-4 font-semibold bg-red-500 text-black-900 shadow ">
+    
+    <div class="container mx-auto px-6 py-12 md:px-8 bg-red-500 text-green-500 shadow">
         <i> Display Name - </i>
         <span class="font-black">
             {{$profile->display_name}}<br><br>

@@ -22,16 +22,16 @@
                 @auth
                     @if(auth()->user()->profile != null)
                         <a href="{{ route('userprofiles.show', ['profile' => auth()->user()->profile])}}" 
-                            class="text-sm font-black text-red-700 dark:text-gray-500 underline">View Profile</a>
+                            class="text-sm font-black text-red-700 dark:text-gray-500 no-underline hover:underline">View Profile</a>
                     @else
                         <a href="{{route('userprofiles.create', ['user' => auth()->user()->profile])}}"
-                            class="text-sm font-black text-red-700 dark:text-gray-500 underline">View Profile</a>
+                            class="text-sm font-black text-red-700 dark:text-gray-500 no-underline hover:underline">View Profile</a>
                     @endif
                 @else
-                    <a href="{{ route('login') }}" class="text-sm text-red-700 text-right dark:text-gray-500 underline">Log in</a>
+                    <a href="{{ route('login') }}" class="text-sm text-red-700 text-right dark:text-gray-500 no-underline hover:underline">Log in</a>
 
                 @if (Route::has('register'))
-                    <a href="{{ route('register') }}" class="ml-4 text-sm text-red-800 dark:text-gray-500 underline">Register</a>
+                    <a href="{{ route('register') }}" class="ml-4 text-sm text-red-800 dark:text-gray-500 no-underline hover:underline">Register</a>
                 @endif
                 
             @endauth

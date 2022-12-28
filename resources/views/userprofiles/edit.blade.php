@@ -8,7 +8,8 @@
     <p> Edit Profile:</p>
 </div>  
 
-<div class="px-6 py-2 bg-red-600">
+<div class="px-6 py-2">
+    <div class="container mx-auto px-6 py-12 md:px-8 bg-red-600 text-green-500">
     <form method="POST" action="{{route('userprofiles.update',['profile' => $profile])}}">
         @csrf
         @method('patch')
@@ -32,11 +33,11 @@
             <input type="text" name="bio" value="{{ old('bio')}}" 
                 style="height:50px;font-size:12pt;width:600px;"></p><br>
 
-            <button class="h-10 px-6 mb-4 font-semibold rounded-md border border-black text-slate-900 bg-white" 
+            <button class="shadow-md shadow-green-500 h-10 px-6 mb-4 font-semibold rounded-md border border-black text-slate-900 bg-white" 
                 type="submit" value="Submit">Submit
             </button>
 
-            <button class="h-10 px-6 mb-4 font-semibold rounded-md border border-black text-slate-900 bg-white"> 
+            <button class="shadow-md shadow-green-500 h-10 px-6 mb-4 font-semibold rounded-md border border-black text-slate-900 bg-white"> 
                 <a href="{{ route('userprofiles.show',['profile' => $profile])}}"> Cancel </a>
             </button>
     </form>
