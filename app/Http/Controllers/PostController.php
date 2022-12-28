@@ -48,8 +48,6 @@ class PostController extends Controller
             'image' => 'image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
-        $imageName;
-
         if(request()->image != null){
             $imageName = time().'.'.$request->image->extension();
             $request->image->move(public_path('images'), $imageName);
@@ -67,7 +65,7 @@ class PostController extends Controller
             $post->user_id = auth()->user()->id; 
             $post->save();  
         }
-        
+
         $commentPaginate = $post->comments->paginate(10);
         $post->tags()->sync($request->tags);
 

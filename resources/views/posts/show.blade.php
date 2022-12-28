@@ -77,46 +77,11 @@
 
     @livewire('post-comment',['post' => $post->id])
     
-        <ul>
-            @foreach($commentPaginate as $comment)
-                <div class="container mx-auto px-6 py-12 md:px-8 bg-orange-600 text-green-500">
-                    User: 
-                    <span class="text-purple-900 font-extrabold italic">
-                        <a href="{{route('users.show',['user' => $post->user, 'post' => $post])}}" class="no-underline hover:underline"> 
-                        @if($comment->user->profile == null)  
-                            {{$comment->user->name}}<br></a>
-                        @else
-                            {{$comment->user->profile->display_name}}<br></a>
-                        @endif        
-                    </span>
-                    Comment:
-                    <span class="text-purple-900 font-extrabold">
-                         <a href="{{route('comments.show', ['post' => $post, 'comment' => $comment])}}" class="no-underline hover:underline"> 
-                            {{$comment->description}}<br><br></a>
-                    </span>
-                    @if(!Auth::user())
-                    @else 
-                        <form method="POST" action="{{route('likes.likeComment',['comment' => $comment, 'post' => $post])}}">
-                            @csrf                
-                            <button class="h-10 px-6 mb-2 font-black rounded-md border border-black text-slate-900 bg-green-600" 
-                            type="submit"> Like Comment
-                            </button>
-                        </form>
-                    @endif
-                </div> 
-                <br>
-            @endforeach
-        </ul>
-
-    {{-- <button class="shadow-md shadow-green-400 h-10 px-6 font-semibold rounded-md border border-black text-slate-900 bg-white" type="button">
-        <a href="{{ route('comments.create', ['post' => $post])}}">Create a Comment</a>
-    </button> --}}
-    
     <button class="shadow-md shadow-red-400 h-10 px-6 font-semibold rounded-md border border-black text-slate-900 bg-white" type="button">
         <a href="{{ route('posts.index')}}">Return</a>
     </button>
 
-</div>
+
 
 <div class="py-4">
     {{ $commentPaginate -> links('pagination::tailwind')}}

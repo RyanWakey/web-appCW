@@ -22,7 +22,7 @@
                 <div class="px-6 py-1">
                     Post Title:
                     <a href="{{ route('posts.show', ['post' => $post->id,'postcomments' => $post->comments])}}" class="no-underline hover:underline"
-                        >{{ $post->title }}</a><br>  
+                        >{{ $post->title }}</a><br><br>
                 </div>
                 Tags:
                 <span class="text-teal-300 font-black">

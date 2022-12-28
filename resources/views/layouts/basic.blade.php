@@ -40,8 +40,7 @@
     </h1>
 </div>
         
-<body class="antialiased bg-blue-300">
-    @livewireScripts   
+<body class="antialiased bg-blue-300">  
     @if ($errors->any())
             <div>
                 Errors:
@@ -59,6 +58,7 @@
 
         <div>
             @yield('content')
+            @livewireScripts   
         </div> 
 </body>
 
