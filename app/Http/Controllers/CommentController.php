@@ -91,6 +91,7 @@ class CommentController extends Controller
             'description' => 'required|max:500',
         ]);
 
+        $comment = Comment::find($comment->id);
         $comment->description = $request->description;
         $comment->save();
         

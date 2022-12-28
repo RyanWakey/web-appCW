@@ -115,14 +115,14 @@ class PostController extends Controller
         if(request()->image != null){
             $imageName = time().'.'.$request->image->extension();
             $request->image->move(public_path('images'), $imageName);
-            $post = new Post;
+            $post = Post::find($post->id);
             $post->title = $request->title;
             $post->description = $request->description;
             $post->image = $imageName;
             $post->user_id = auth()->user()->id; 
             $post->save();
         }else {
-            $post = new Post;
+            $post = Post::find($post->id);
             $post->title = $request->title;
             $post->description = $request->description;
             $post->image = null;
