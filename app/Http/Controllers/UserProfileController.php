@@ -85,6 +85,7 @@ class UserProfileController extends Controller
             'bio' => 'nullable|max:1000',  
         ]);
 
+        $profile = Profile::findOrFail($profile->id);
         $profile->display_name = $request->display_name;
         $profile->first_name = $request->first_name;
         $profile->last_name = $request->last_name;
